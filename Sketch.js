@@ -1,13 +1,18 @@
+Pawn pawn;
+
 let positionX;
 let positionY
 
 function setup() {
     createCanvas(800, 800);
+    pawn = new Pawn();
+    pawn.preload();
+    pawn.image();
   }
   
   function draw() {
     background(220);
-    Pawn();
+    pawn.visual();
     
     stroke(54);
     for (let i = 1; i <= 7; i++){
