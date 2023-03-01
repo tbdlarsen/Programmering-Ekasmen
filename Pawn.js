@@ -7,7 +7,9 @@ class Pawn {
         this.y = 200;
     }
     
-    function visual() {
+    preload() {
+        spritesheet = loadImage("Spritesheet.png");
+        
 
 
     }
