@@ -1,30 +1,30 @@
-let x;
-let y;
-let spritesheet;
-let SpriteSheet[];
+
  
 class Pawn {
     constructor(x,y) {
-        this.x = 0;
-        this.y = 0;
+        this.x;
+        this.y;
+        this.spriteArray = [];
+        this.spritesheet;
+        
     }
     
-    preload() {
-        spritesheet = loadImage("Spritesheet.png");
+   preload() {
+        spritesheet = loadImage("Image/Spritesheet.png");
         
 
 
     }
 
     image() {
-        let widthSpritesheet = spritesheet.width/6;
-        let heightSpritesheet= spritesheet.height/2;
+        this.widthSpritesheet = spritesheet.width/6;
+        this.heightSpritesheet= spritesheet.height/2;
         
         for(let y = 0; y < 2; y++) {
-            SpriteSheet[y] = [];
+            spriteArray[y] = [];
             
             for (let x = 0; x < 6; x++) {
-                SpriteSheet[y][x] = spritesheet.get(x*widthSpritesheet,y*heightSpritesheet,widthSpritesheet,heightSpritesheet);
+                this.spriteArray[y][x] = this.spritesheet.get(x*this.widthSpritesheet,y*this.heightSpritesheet,this.widthSpritesheet,this,heightSpritesheet);
             }
         }
 

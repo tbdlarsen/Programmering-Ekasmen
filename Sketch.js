@@ -1,7 +1,7 @@
-Pawn pawn;
+let pawn;
 
 let positionX;
-let positionY
+let positionY;
 
 function setup() {
     createCanvas(800, 800);
