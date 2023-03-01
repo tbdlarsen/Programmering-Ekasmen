@@ -17,7 +17,7 @@ function setup() {
  
      }
 
-     positionX = map(mouseX,0,width,0,7);
+     positionX = int(map(mouseX,0,width,0,7));
 
      print(positionX)
 
