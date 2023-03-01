@@ -1,4 +1,4 @@
-
+let positionX;
 
 
 function setup() {
@@ -14,13 +14,12 @@ function setup() {
         
          line((width/8)*i,0,(width/8)*i, height);
          line(0,(height/8)*i,width,(height/8)*i)
-     
-     
-     
  
      }
 
+     positionX = map(mouseX,0,width,0,7);
 
+     print(positionX)
 
 
   }
