@@ -9,7 +9,7 @@ function setup() {
     background(220);
 
     
-
+    stroke(54);
     for (let i = 1; i >= 8; i++){
         for (let j = 1; j >=8; i++){
  
