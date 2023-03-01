@@ -7,7 +7,7 @@ function setup() {
   
   function draw() {
     background(220);
-
+    Pawn();
     
     stroke(54);
     for (let i = 1; i <= 7; i++){
