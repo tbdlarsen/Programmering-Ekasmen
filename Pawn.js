@@ -1,17 +1,18 @@
 let x;
 let y;
-
+ 
 class Pawn {
-    constructor(x,y); {
-        x = 200;
-        y = 200;
+    constructor(x,y) {
+        this.x = 200;
+        this.y = 200;
     }
     
     function visual() {
 
-        
+
     }
 
+    
 
 
 
