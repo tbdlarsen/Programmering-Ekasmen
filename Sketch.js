@@ -1,4 +1,6 @@
 
+
+
 function setup() {
     createCanvas(800, 800);
   }
@@ -6,7 +8,7 @@ function setup() {
   function draw() {
     background(220);
 
-    
+
 
 
 
@@ -15,5 +17,9 @@ function setup() {
 
   }
 
+  function board(){
 
+
+
+  }
 
