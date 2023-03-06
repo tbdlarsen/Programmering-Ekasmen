@@ -23,6 +23,7 @@ function setup() {
      }
 
      pawn.visual();
+     
      positionX = int(map(mouseX,0,width,0,8));
      positionY = int(map(mouseY,0,height,0,8));
 
