@@ -29,7 +29,7 @@ function setup() {
 
 
      print(positionX + " " + positionY)
-     delay(1000);
+     
 
 
   }
