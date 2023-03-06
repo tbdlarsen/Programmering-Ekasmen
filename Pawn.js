@@ -6,13 +6,9 @@ class Pawn {
         this.x = 200;
         this.y = 200;
     }
+
+
     
-    preload() {
-        spritesheet = loadImage("Spritesheet.png");
-        
-
-
-    }
 
     
 
@@ -23,4 +19,4 @@ class Pawn {
 
 
 
-}
+} 
