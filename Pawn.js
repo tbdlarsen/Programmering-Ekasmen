@@ -2,8 +2,8 @@
  
 class Pawn {
     constructor(x,y) {
-        this.x;
-        this.y;
+        this.x = x;
+        this.y = y;
         /*this.spriteArray = [];
         this.spritesheet;
         */
@@ -14,7 +14,7 @@ class Pawn {
 
     visual(){
         square(this.x,this.y,50);
-        
+
     }
 
 
