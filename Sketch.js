@@ -5,7 +5,7 @@ let positionY;
 
 function setup() {
     createCanvas(800, 800);
-    pawn = new Pawn(100,100);
+    pawn = new Pawn(120,120);
     
     
   }
