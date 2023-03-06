@@ -4,11 +4,21 @@ class Pawn {
     constructor(x,y) {
         this.x;
         this.y;
-        this.spriteArray = [];
+        /*this.spriteArray = [];
         this.spritesheet;
+        */
+
+
         
     }
-    
+
+
+
+
+
+
+
+    /*
    preload() {
         spritesheet = loadImage("Image/Spritesheet.png");
         
@@ -39,7 +49,7 @@ class Pawn {
 
     
 
-
+*/
 
 
 
