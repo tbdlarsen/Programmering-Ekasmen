@@ -12,6 +12,7 @@ class Pawn {
 
     }
 
+
     visual(){
         square(this.x,this.y,50);
 
@@ -27,9 +28,10 @@ class Pawn {
    preload() {
         spritesheet = loadImage("Image/Spritesheet.png");
         
+}
 
 
-    }
+    
 
     image() {
         this.widthSpritesheet = spritesheet.width/6;
@@ -61,4 +63,4 @@ class Pawn {
 
 
 
-}
+} 

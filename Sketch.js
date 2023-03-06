@@ -33,7 +33,16 @@ function setup() {
      
 
 
+     
+
+
   }
 
 
 
+  function preload() {
+    spritesheet = loadImage("Spritesheet.png");
+    
+
+
+}
