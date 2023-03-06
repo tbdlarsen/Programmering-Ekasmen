@@ -6,8 +6,8 @@ let positionY;
 function setup() {
     createCanvas(800, 800);
     pawn = new Pawn();
-    pawn.preload();
-    pawn.image();
+    
+    
   }
   
   function draw() {
