@@ -7,8 +7,13 @@ class Pawn {
         /*this.spriteArray = [];
         this.spritesheet;
         */
+        
 
 
+    }
+
+    visual(){
+        square(this.x,this.y,50);
         
     }
 
