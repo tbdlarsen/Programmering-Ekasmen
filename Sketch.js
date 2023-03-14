@@ -1,13 +1,17 @@
 let positionX;
 let positionY
+let pawn;
+
+
 
 function setup() {
     createCanvas(800, 800);
+    pawn = new Pawn(50,50);
   }
   
   function draw() {
     background(220);
-    Pawn();
+    pawn.visual();
     
     stroke(54);
     for (let i = 1; i <= 7; i++){
@@ -30,7 +34,7 @@ function setup() {
 
   }
 
-
+/*
 
   function preload() {
     spritesheet = loadImage("Spritesheet.png");
@@ -38,3 +42,4 @@ function setup() {
 
 
 }
+*/
