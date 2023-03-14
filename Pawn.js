@@ -1,65 +1,20 @@
-
- 
 class Pawn {
     constructor(x,y) {
+        //Variabler til constructer
         this.x = x;
         this.y = y;
-        /*this.spriteArray = [];
         this.spritesheet;
-        */
-        
-
-
+        this.billedX = 0;
+        this.billedY = 0;
+        this.billedWidth = 640;
+        this.billedHeight = 213;
     }
 
-
-    visual(){
-        square(this.x,this.y,50);
-
-    }
-
-
-
-
-
-
-
-    /*
-   preload() {
-        spritesheet = loadImage("Image/Spritesheet.png");
-        
-}
-
-
-    
-
-    image() {
-        this.widthSpritesheet = spritesheet.width/6;
-        this.heightSpritesheet= spritesheet.height/2;
-        
-        for(let y = 0; y < 2; y++) {
-            spriteArray[y] = [];
-            
-            for (let x = 0; x < 6; x++) {
-                this.spriteArray[y][x] = this.spritesheet.get(x*this.widthSpritesheet,y*this.heightSpritesheet,this.widthSpritesheet,this,heightSpritesheet);
-            }
-        }
-
-
-
-    }
-
+    //Visual funktion som viser en del af spritesheetet. 
     visual() {
-        image(spritesheet,200,200);
-
+        image(spritesheet,this.billedX,this.billedY,this.billedWidth/6,this.billedHeight/2,
+        1*(this.billedWidth/6),0*(this.billedHeight/2),1*(this.billedWidth/6),1*(this.billedHeight/2)); //Syntax: Refference image() nederst
     }
-
-    
-
-*/
-
-
-
 
 
 
