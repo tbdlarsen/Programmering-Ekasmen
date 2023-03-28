@@ -12,8 +12,6 @@ function preload() {
 
 //Funktion setup (køre kode en gang)
 function setup() {
-
-
   createCanvas(800, 800);
   //Skaber en ny bonde
   pawn = new Pawn(100,100);  
