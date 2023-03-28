@@ -4,6 +4,7 @@ let positionX;
 let positionY;
 let spritesheet;
 
+
 //Preloader spritesheet så det klar til brug.
 function preload() {
   spritesheet = loadImage("Image/Spritesheet.png");
@@ -24,8 +25,9 @@ function setup() {
     stroke(54);
 
     //Indsætter klassefunktioner
+    
     pawn.visual(0,5);
-
+  
     //Laver spillebræt med linjer
     for (let i = 1; i <= 7; i++){
       line((width/8)*i,0,(width/8)*i, height);
