@@ -1,8 +1,22 @@
 //Globale variabler
+
+
+//pieces
 let pawn;
+let pawns = [0,0,0,0,0,0,0,0];
+let temp;
+
+
+
+//spritesheet
+let spritesheet;
+
+
+
+//mouse position
 let positionX;
 let positionY;
-let spritesheet;
+
 
 
 //Preloader spritesheet så det klar til brug.
@@ -14,9 +28,15 @@ function preload() {
 //Funktion setup (køre kode en gang)
 function setup() {
   createCanvas(800, 800);
+
+  for (let i = 0; i < 8; i++) {
+    pawns[i] = new Pawn(100*i,200);
+  }
+
+  /*
   //Skaber en ny bonde
   pawn = new Pawn(100,100);  
-
+*/
   }
 
 //Funktion draw (køre kode i et loop)  
@@ -26,7 +46,7 @@ function setup() {
 
     //Indsætter klassefunktioner
     
-    pawn.visual(0,5);
+   
   
     //Laver spillebræt med linjer
     for (let i = 1; i <= 7; i++){
@@ -34,6 +54,13 @@ function setup() {
       line(0,(height/8)*i,width,(height/8)*i)
      }
           
+     for (let i = 0; i < 8; i++) {
+      pawns[i].visual(0,5);
+      print(pawns[i].x,pawns[i].y)
+      
+    }
+
+
      //Finder musens koordinater og printer det til console
      positionX = int(map(mouseX,0,width,0,8));
      positionY = int(map(mouseY,0,height,0,8));

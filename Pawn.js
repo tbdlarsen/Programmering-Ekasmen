@@ -4,8 +4,8 @@ class Pawn {
         this.x = x;
         this.y = y;
         this.spritesheet;
-        this.billedX = 0;
-        this.billedY = 0;
+        this.billedX = x;
+        this.billedY = y;
         this.billedWidth = 640;
         this.billedHeight = 213;
     }
