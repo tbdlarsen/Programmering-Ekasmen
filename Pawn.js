@@ -1,13 +1,18 @@
 class Pawn {
     constructor(x,y) {
-        //Variabler til constructer
-        this.x = x;
-        this.y = y;
+        //spritesheet
         this.spritesheet;
        
-       
+        //størrelse på spritesheet
         this.billedWidth = 640;
         this.billedHeight = 213;
+
+
+
+        //position af billede og brik
+        this.x = x;
+        this.y = y;
+
     }
 
     //Visual funktion som viser en del af spritesheetet. 
