@@ -16,7 +16,7 @@ function setup() {
 
   createCanvas(800, 800);
   //Skaber en ny bonde
-  pawn = new Pawn(120,120);  
+  pawn = new Pawn(100,100);  
 
   }
 
