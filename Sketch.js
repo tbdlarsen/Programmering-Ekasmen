@@ -24,7 +24,7 @@ function setup() {
     stroke(54);
 
     //Indsætter klassefunktioner
-    pawn.visual();
+    pawn.visual(0,5);
 
     //Laver spillebræt med linjer
     for (let i = 1; i <= 7; i++){
