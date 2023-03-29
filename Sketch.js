@@ -3,8 +3,9 @@
 
 //pieces
 let pawn;
-let pawns = [0,0,0,0,0,0,0,0];
-let temp;
+let WhitePawns = [0,0,0,0,0,0,0,0];
+//et BlackPawns = [];
+
 
 
 
