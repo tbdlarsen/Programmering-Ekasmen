@@ -72,7 +72,11 @@ function setup() {
 
         whiteKing[i].visual(0);
         blackKing[i].visual(1);
+        whiteKing[i].visual(0);
+        blackKing[i].visual(1);
 
+        whiteQueens[i].visual(0);
+        blackQueens[i].visual(1);
         whiteQueens[i].visual(0);
         blackQueens[i].visual(1);
 
@@ -81,15 +85,23 @@ function setup() {
 
         whiteBishop[i].visual(0);
         blackBishop[i].visual(1);
+        whiteBishop[i].visual(0);
+        blackBishop[i].visual(1);
 
+        whiteKnigts[i].visual(0);
+        blackKnigts[i].visual(1);
         whiteKnigts[i].visual(0);
         blackKnigts[i].visual(1);
 
         whiteRooks[i].visual(0);
         blackRooks[i].visual(1);
+        whiteRooks[i].visual(0);
+        blackRooks[i].visual(1);
 
       }
 
+      whitePawns[i].visual(0);
+      blackPawns[i].visual(1);
       whitePawns[i].visual(0);
       blackPawns[i].visual(1);
 
@@ -107,14 +119,17 @@ function setup() {
 
 
   }
+
+
+
+
 function startposition (){
 
-
-
-
-
 for (let i = 0; i < 8; i++) {
-
+   //bønder
+   whitePawns[i] = new Pawn(100*i,100);
+   blackPawns[i] = new Pawn(100*i,600);
+   
   if (i < 1){
 
     //Dronninger
@@ -147,13 +162,6 @@ for (let i = 0; i < 8; i++) {
   whitePawns[i] = new Pawn(1*i,1);
   blackPawns[i] = new Pawn(1*i,6);
 }
-
-
-
-
-
-
-
 
 
 }
