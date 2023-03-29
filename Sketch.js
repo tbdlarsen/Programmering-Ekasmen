@@ -6,9 +6,12 @@
 let rook;
 let whitePawns = [];
 let blackPawns = [];
+
 let whiteRooks =[];
+let blackRooks = [];
 
-
+let whiteKnigts = [];
+let blackKnigts = [];
 
 
 //spritesheet
@@ -56,7 +59,7 @@ function setup() {
 
      for (let i = 0; i < 8; i++) {
       whitePawns[i].visual(0,5);
-      print(whitePawns[i].x,whitePawns[i].y)
+      
       
       blackPawns[i].visual(1,5);
 
@@ -64,7 +67,7 @@ function setup() {
 
     for (let i = 0; i < whiteRooks.length; i++){
       whiteRooks[i].visual(0,4);
-
+      blackRooks[i].visual(1,4);
 
     }
 
@@ -83,27 +86,42 @@ function setup() {
 function startposition (){
 
 
-//hvid
+
 
 //bønder
 for (let i = 0; i < 8; i++) {
+
+  if (i < 1){
+
+
+  }
+
+  if (i < 2){
+    whiteRooks[i] = new Rook(i*700,0);
+    blackRooks[i] = new Rook(i*700,700);
+
+    whiteKnigts[i] = new 
+
+
+  }
+
+  
+
+  //bønder
+
+  //hvid
   whitePawns[i] = new Pawn(100*i,100);
-}
 
-//tårn
-whiteRooks[1] = new Rook(0,0);
-whiteRooks[2] = new Rook(0,700);
-
-
-
-
-
-
-
-//sort
-for (let i = 0; i < 8; i++) {
+  //sort
   blackPawns[i] = new Pawn(100*i,600);
 }
+
+
+
+
+
+
+
 
 
 }
