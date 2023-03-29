@@ -1,4 +1,4 @@
-class bishop extends Pawn{
+class Bishop extends Pawn{
     constructor(x,y){
         super(x,y);
 
