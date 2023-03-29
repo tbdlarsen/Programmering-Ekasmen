@@ -33,10 +33,7 @@ function setup() {
     pawns[i] = new Pawn(100*i,200);
   }
 
-  /*
-  //Skaber en ny bonde
-  pawn = new Pawn(100,100);  
-*/
+ 
   }
 
 //Funktion draw (køre kode i et loop)  
@@ -72,5 +69,18 @@ function setup() {
 
 
   }
+function startposition (){
 
+
+//hvid
+
+
+
+
+
+//sort
+
+
+
+}
 
