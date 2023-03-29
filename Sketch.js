@@ -2,9 +2,11 @@
 
 
 //pieces
-let pawn;
-let WhitePawns = [];
-//et BlackPawns = [];
+
+let rook;
+let whitePawns = [];
+let blackPawns = [];
+let whiteRooks =[];
 
 
 
@@ -30,10 +32,8 @@ function preload() {
 function setup() {
   createCanvas(800, 800);
 
-  for (let i = 0; i < 8; i++) {
-    pawns[i] = new Pawn(100*i,200);
-  }
 
+  startposition();
  
   }
 
@@ -52,10 +52,20 @@ function setup() {
       line(0,(height/8)*i,width,(height/8)*i)
      }
           
+
+
      for (let i = 0; i < 8; i++) {
-      pawns[i].visual(0,5);
-      print(pawns[i].x,pawns[i].y)
+      whitePawns[i].visual(0,5);
+      print(whitePawns[i].x,whitePawns[i].y)
       
+      blackPawns[i].visual(1,5);
+
+    }
+
+    for (let i = 0; i < whiteRooks.length; i++){
+      whiteRooks[i].visual(0,4);
+
+
     }
 
 
@@ -75,12 +85,25 @@ function startposition (){
 
 //hvid
 
+//bønder
+for (let i = 0; i < 8; i++) {
+  whitePawns[i] = new Pawn(100*i,100);
+}
+
+//tårn
+whiteRooks[1] = new Rook(0,0);
+whiteRooks[2] = new Rook(0,700);
+
+
+
 
 
 
 
 //sort
-
+for (let i = 0; i < 8; i++) {
+  blackPawns[i] = new Pawn(100*i,600);
+}
 
 
 }
