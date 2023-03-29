@@ -70,37 +70,28 @@ function setup() {
 
       if (i < 1){
 
-        whiteKing[i].visual(0,0);
-        blackKing[i].visual(1,0);
+        whiteKing[i].visual(0);
+        blackKing[i].visual(1);
 
-        whiteQueens[i].visual(0,1);
-        blackQueens[i].visual(1,1);
+        whiteQueens[i].visual(0);
+        blackQueens[i].visual(1);
 
       }
       if (i < 2){
 
-        whiteBishop[i].visual(0,2);
-        blackBishop[i].visual(1,2);
+        whiteBishop[i].visual(0);
+        blackBishop[i].visual(1);
 
-        whiteKnigts[i].visual(0,3);
-        blackKnigts[i].visual(1,3);
+        whiteKnigts[i].visual(0);
+        blackKnigts[i].visual(1);
 
-        whiteRooks[i].visual(0,4);
-        blackRooks[i].visual(1,4);
+        whiteRooks[i].visual(0);
+        blackRooks[i].visual(1);
 
       }
 
-      whitePawns[i].visual(0,5);
-      blackPawns[i].visual(1,5);
-
-    }
-
-    for (let i = 0; i < 2; i++){
-      whiteRooks[i].visual(0,4);
-      blackRooks[i].visual(1,4);
-
-      whiteKnigts[i].visual(0,3);
-      blackKnigts[i].visual(1,3);
+      whitePawns[i].visual(0);
+      blackPawns[i].visual(1);
 
     }
 
@@ -116,14 +107,17 @@ function setup() {
 
 
   }
+
+
+
+
 function startposition (){
 
-
-
-
-
 for (let i = 0; i < 8; i++) {
-
+   //bønder
+   whitePawns[i] = new Pawn(100*i,100);
+   blackPawns[i] = new Pawn(100*i,600);
+   
   if (i < 1){
 
     //Dronninger
@@ -152,17 +146,7 @@ for (let i = 0; i < 8; i++) {
 
    
   }
-  //bønder
-  whitePawns[i] = new Pawn(100*i,100);
-  blackPawns[i] = new Pawn(100*i,600);
 }
-
-
-
-
-
-
-
 
 
 }
