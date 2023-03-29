@@ -70,37 +70,28 @@ function setup() {
 
       if (i < 1){
 
-        whiteKing[i].visual(0,0);
-        blackKing[i].visual(1,0);
+        whiteKing[i].visual(0);
+        blackKing[i].visual(1);
 
-        whiteQueens[i].visual(0,1);
-        blackQueens[i].visual(1,1);
+        whiteQueens[i].visual(0);
+        blackQueens[i].visual(1);
 
       }
       if (i < 2){
 
-        whiteBishop[i].visual(0,2);
-        blackBishop[i].visual(1,2);
+        whiteBishop[i].visual(0);
+        blackBishop[i].visual(1);
 
-        whiteKnigts[i].visual(0,3);
-        blackKnigts[i].visual(1,3);
+        whiteKnigts[i].visual(0);
+        blackKnigts[i].visual(1);
 
-        whiteRooks[i].visual(0,4);
-        blackRooks[i].visual(1,4);
+        whiteRooks[i].visual(0);
+        blackRooks[i].visual(1);
 
       }
 
-      whitePawns[i].visual(0,5);
-      blackPawns[i].visual(1,5);
-
-    }
-
-    for (let i = 0; i < 2; i++){
-      whiteRooks[i].visual(0,4);
-      blackRooks[i].visual(1,4);
-
-      whiteKnigts[i].visual(0,3);
-      blackKnigts[i].visual(1,3);
+      whitePawns[i].visual(0);
+      blackPawns[i].visual(1);
 
     }
 
@@ -127,34 +118,34 @@ for (let i = 0; i < 8; i++) {
   if (i < 1){
 
     //Dronninger
-    whiteQueens[i] = new Queen(300,0);
-    blackQueens[i] = new Queen(300,700);
+    whiteQueens[i] = new Queen(3,0);
+    blackQueens[i] = new Queen(3,7);
 
     //Konger
-    whiteKing[i] = new King(400,0);
-    blackKing[i] = new King(400,700);
+    whiteKing[i] = new King(4,0);
+    blackKing[i] = new King(4,7);
 
   }
 
   if (i < 2){
 
     //tårne
-    whiteRooks[i] = new Rook(i*700,0);
-    blackRooks[i] = new Rook(i*700,700);
+    whiteRooks[i] = new Rook(i*7,0);
+    blackRooks[i] = new Rook(i*7,7);
 
     //heste
-    whiteKnigts[i] = new Knight(100+i*500,0);
-    blackKnigts[i] = new Knight(100+i*500,700);
+    whiteKnigts[i] = new Knight(1+i*5,0);
+    blackKnigts[i] = new Knight(1+i*5,7);
 
     //løbere
-    whiteBishop[i] = new Bishop(200+i*300,0);
-    blackBishop[i] = new Bishop(200+i*300,700);
+    whiteBishop[i] = new Bishop(2+i*3,0);
+    blackBishop[i] = new Bishop(2+i*3,7);
 
    
   }
   //bønder
-  whitePawns[i] = new Pawn(100*i,100);
-  blackPawns[i] = new Pawn(100*i,600);
+  whitePawns[i] = new Pawn(1*i,1);
+  blackPawns[i] = new Pawn(1*i,6);
 }
 
 
