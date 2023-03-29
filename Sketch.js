@@ -14,6 +14,7 @@ let whiteKnigts = [];
 let blackKnigts = [];
 
 
+
 //spritesheet
 let spritesheet;
 
@@ -65,9 +66,12 @@ function setup() {
 
     }
 
-    for (let i = 0; i < whiteRooks.length; i++){
+    for (let i = 0; i < 2; i++){
       whiteRooks[i].visual(0,4);
       blackRooks[i].visual(1,4);
+
+      whiteKnigts[i].visual(0,3);
+      blackKnigts[i].visual(1,3);
 
     }
 
@@ -100,7 +104,9 @@ for (let i = 0; i < 8; i++) {
     whiteRooks[i] = new Rook(i*700,0);
     blackRooks[i] = new Rook(i*700,700);
 
-    whiteKnigts[i] = new Knight();
+    whiteKnigts[i] = new Knight(100+i*500,0);
+    blackKnigts[i] = new Knight(100+i*500,700);
+
 
 
   }
