@@ -100,7 +100,7 @@ for (let i = 0; i < 8; i++) {
     whiteRooks[i] = new Rook(i*700,0);
     blackRooks[i] = new Rook(i*700,700);
 
-    whiteKnigts[i] = new 
+    whiteKnigts[i] = new Knight();
 
 
   }
