@@ -1,5 +1,8 @@
 //Globale variabler
 
+//Spiler Boolean Variabel
+let spiller = false;
+let d = 5;
 
 //pieces
 
@@ -46,8 +49,12 @@ function setup() {
 
 
   startposition();
- 
+  
+  //Spiller Skifte
+  
+
   }
+
 
 //Funktion draw (køre kode i et loop)  
   function draw() {
@@ -114,10 +121,12 @@ function setup() {
      print(positionX + " " + positionY)
      
 
+    //Spiller Skift
+    spillerSkift();
+    //print(spiller); 
 
-     
-
-
+  
+    
   }
 
 
@@ -165,4 +174,21 @@ for (let i = 0; i < 8; i++) {
 
 
 }
+
+function spillerSkift() {
+  if (positionX == 7 && positionY == 7 && d == 5) {
+  d = spiller;
+  spiller = !spiller;
+  
+  if (spiller == true) {
+    circle(200,200, 50);
+  }
+
+  else {
+    circle(600,600, 150);
+  }
+
+  }
+}
+
 
