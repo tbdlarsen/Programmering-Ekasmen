@@ -4,9 +4,7 @@
 let spiller = false;
 let d = 5;
 
-//pieces
-
-
+//Pieces
 let whitePawns = [];
 let blackPawns = [];
 
@@ -26,15 +24,13 @@ let whiteKing = [];
 let blackKing = [];
 
 
-//spritesheet
+//Spritesheet
 let spritesheet;
 
 
-
-//mouse position
+//Mouse position
 let positionX;
 let positionY;
-
 
 
 //Preloader spritesheet så det klar til brug.
@@ -45,19 +41,23 @@ function preload() {
 
 //Funktion setup (køre kode en gang)
 function setup() {
+
+  //Laver Canvas
   createCanvas(800, 800);
 
-
+  //Funktioner som bliver kørt i setup()
   startposition();
-  
-  //Spiller Skifte
+
   
 
   }
 
 
+
 //Funktion draw (køre kode i et loop)  
   function draw() {
+
+    //Baground og stroke farves
     background(220);
     stroke(54);
 
@@ -71,8 +71,6 @@ function setup() {
       line(0,(height/8)*i,width,(height/8)*i)
      }
           
-
-
      for (let i = 0; i < 8; i++) {
 
       if (i < 1){
@@ -131,7 +129,7 @@ function setup() {
 
 
 
-
+//Funktion som spawner alle brikkerne ved deres startlokation (Spillets Startopstilling)
 function startposition (){
 
 for (let i = 0; i < 8; i++) {
@@ -153,21 +151,21 @@ for (let i = 0; i < 8; i++) {
 
   if (i < 2){
 
-    //tårne
+    //Tårne
     whiteRooks[i] = new Rook(i*7,0);
     blackRooks[i] = new Rook(i*7,7);
 
-    //heste
+    //Heste
     whiteKnigts[i] = new Knight(1+i*5,0);
     blackKnigts[i] = new Knight(1+i*5,7);
 
-    //løbere
+    //Løbere
     whiteBishop[i] = new Bishop(2+i*3,0);
     blackBishop[i] = new Bishop(2+i*3,7);
 
    
   }
-  //bønder
+  //Bønder
   whitePawns[i] = new Pawn(1*i,1);
   blackPawns[i] = new Pawn(1*i,6);
 }
