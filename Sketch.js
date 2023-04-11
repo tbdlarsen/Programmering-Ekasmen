@@ -171,21 +171,21 @@ for (let i = 0; i < 8; i++) {
 
 function spillerSkift() {
 //Spiler Boolean Variabel
-let spiller = false;
+let spiller = true;
 let d = 5;
 
+print(spiller);
+
   if (positionX == 7 && positionY == 7 && d == 5) {
-  d = spiller;
   spiller = !spiller;
   
-  if (spiller == true) {
-    circle(200,200, 50);
-  }
+    if (spiller == false) {
+      circle(200,200,50);
+    }
 
-  else {
-    circle(600,600, 150);
-  }
-
+    else {
+      circle(400,400,150);
+    }
   }
 }
 
