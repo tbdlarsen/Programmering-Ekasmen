@@ -1,9 +1,5 @@
 //Globale variabler
 
-//Spiler Boolean Variabel
-let spiller = false;
-let d = 5;
-
 //Pieces
 let whitePawns = [];
 let blackPawns = [];
@@ -174,6 +170,10 @@ for (let i = 0; i < 8; i++) {
 }
 
 function spillerSkift() {
+//Spiler Boolean Variabel
+let spiller = false;
+let d = 5;
+
   if (positionX == 7 && positionY == 7 && d == 5) {
   d = spiller;
   spiller = !spiller;
