@@ -40,7 +40,7 @@ function setup() {
 
 //Funktion draw (køre kode i et loop)  
   function draw() {
-    let piecesLength = wPieces.length + bPieces.length;
+    
     //Baground og stroke farves
     background(220);
     stroke(54);
