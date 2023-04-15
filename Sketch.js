@@ -1,23 +1,11 @@
 //Globale variabler
 
 //Pieces
-let whitePawns = [];
-let blackPawns = [];
 
-let whiteRooks =[];
-let blackRooks = [];
 
-let whiteKnigts = [];
-let blackKnigts = [];
 
-let whiteBishop = [];
-let blackBishop = [];
-
-let whiteQueens = [];
-let blackQueens = [];
-
-let whiteKing = [];
-let blackKing = [];
+let wPieces = [];
+let bPieces = [];
 
 
 //Spritesheet
@@ -52,7 +40,7 @@ function setup() {
 
 //Funktion draw (køre kode i et loop)  
   function draw() {
-
+    let piecesLength = wPieces.length + bPieces.length;
     //Baground og stroke farves
     background(220);
     stroke(54);
@@ -67,40 +55,20 @@ function setup() {
       line(0,(height/8)*i,width,(height/8)*i)
      }
           
-     for (let i = 0; i < 8; i++) {
-
-      if (i < 1){
-
-        whiteKing[i].visual(0);
-        blackKing[i].visual(1);
-       
-
-        whiteQueens[i].visual(0);
-        blackQueens[i].visual(1);
-        
-
-      }
-      if (i < 2){
-
-        whiteBishop[i].visual(0);
-        blackBishop[i].visual(1);
-       
-
-        whiteKnigts[i].visual(0);
-        blackKnigts[i].visual(1);
-       
-
-        whiteRooks[i].visual(0);
-        blackRooks[i].visual(1);
-        
-
-      }
-      whitePawns[i].update();
-      whitePawns[i].visual(0);
-      blackPawns[i].visual(1);
+    for(let i = 0; i < bPieces.length; i++){
+      bPieces[i].update();
+      bPieces[i].visual(1);
+      
+    }
+    for(let i = 0; i < wPieces.length; i++){
+      wPieces[i].update();
+      wPieces[i].visual(0);
       
 
+
+
     }
+
 
 
      //Finder musens koordinater og printer det til console
@@ -122,40 +90,32 @@ function setup() {
 //Funktion som spawner alle brikkerne ved deres startlokation (Spillets Startopstilling)
 function startposition (){
 
-for (let i = 0; i < 8; i++) {
-   
-  if (i < 1){
 
-    //Dronninger
-    whiteQueens[i] = new Queen(3,0);
-    blackQueens[i] = new Queen(3,7);
 
-    //Konger
-    whiteKing[i] = new King(4,0);
-    blackKing[i] = new King(4,7);
+  wPieces.push(new Queen(3,0));
+  bPieces.push(new Queen(3,7));
 
-  }
+  wPieces.push(new King(4,0));
+  bPieces.push(new King(4,7));
+
+ for (let i = 0; i < 8 ; i++){
 
   if (i < 2){
 
-    //Tårne
-    whiteRooks[i] = new Rook(i*7,0);
-    blackRooks[i] = new Rook(i*7,7);
-
-    //Heste
-    whiteKnigts[i] = new Knight(1+i*5,0);
-    blackKnigts[i] = new Knight(1+i*5,7);
-
-    //Løbere
-    whiteBishop[i] = new Bishop(2+i*3,0);
-    blackBishop[i] = new Bishop(2+i*3,7);
-
-   
+    wPieces.push(new Rook(i*7,0));
+    bPieces.push(new Rook(i*7,7));
+  
+    wPieces.push(new Knight(1+i*5,0));
+    bPieces.push(new Knight(1+i*5,7));
+  
+    wPieces.push(new Bishop(2+i*3,0));
+    bPieces.push(new Bishop(2+i*3,7));
   }
-  //bønder
-  whitePawns[i] = new Pawn(i,1);
-  blackPawns[i] = new Pawn(i,6);
-}
+  
+  wPieces.push(new Pawn(i,1));
+  bPieces.push(new Pawn(i,6));
+
+ }
 
 
 }
