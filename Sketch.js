@@ -73,38 +73,32 @@ function setup() {
 
         whiteKing[i].visual(0);
         blackKing[i].visual(1);
-        whiteKing[i].visual(0);
-        blackKing[i].visual(1);
+       
 
         whiteQueens[i].visual(0);
         blackQueens[i].visual(1);
-        whiteQueens[i].visual(0);
-        blackQueens[i].visual(1);
+        
 
       }
       if (i < 2){
 
         whiteBishop[i].visual(0);
         blackBishop[i].visual(1);
-        whiteBishop[i].visual(0);
-        blackBishop[i].visual(1);
+       
 
         whiteKnigts[i].visual(0);
         blackKnigts[i].visual(1);
-        whiteKnigts[i].visual(0);
-        blackKnigts[i].visual(1);
+       
 
         whiteRooks[i].visual(0);
         blackRooks[i].visual(1);
-        whiteRooks[i].visual(0);
-        blackRooks[i].visual(1);
+        
 
       }
-
+      whitePawns[i].update();
       whitePawns[i].visual(0);
       blackPawns[i].visual(1);
-      whitePawns[i].visual(0);
-      blackPawns[i].visual(1);
+      
 
     }
 
@@ -112,7 +106,7 @@ function setup() {
      //Finder musens koordinater og printer det til console
      positionX = int(map(mouseX,0,width,0,8));
      positionY = int(map(mouseY,0,height,0,8));
-     print(positionX + " " + positionY)
+     //print(positionX + " " + positionY)
      
 
     //Spiller Skift
@@ -129,9 +123,6 @@ function setup() {
 function startposition (){
 
 for (let i = 0; i < 8; i++) {
-   //bønder
-   whitePawns[i] = new Pawn(100*i,100);
-   blackPawns[i] = new Pawn(100*i,600);
    
   if (i < 1){
 
@@ -161,9 +152,9 @@ for (let i = 0; i < 8; i++) {
 
    
   }
-  //Bønder
-  whitePawns[i] = new Pawn(1*i,1);
-  blackPawns[i] = new Pawn(1*i,6);
+  //bønder
+  whitePawns[i] = new Pawn(i,1);
+  blackPawns[i] = new Pawn(i,6);
 }
 
 
