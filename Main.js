@@ -298,33 +298,88 @@ function mousePressed() {
       }
     }
 
-    
+
+
+    //Knight - Mulige bevægelser 
+    for(let i = 4; i < 6; i++){
+
+      //1:8 (N:V)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == 2) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //2:8 (N:Ø)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == 2) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //3:8 (V:N)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == 1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //4:8 (V:S)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == -1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //5:8 (Ø:N)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == 1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //6:8 (Ø:S)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == -1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //7:8 (S:V)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == -2) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+      //8:8 (S:Ø)
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == -2) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      }
+
+    }
+
+
 
     //Bishop - Mulige bevægelser 
-    for(let i = 4; i < 6; i++){
+    for(let i = 6; i < 8; i++){
       
       //4:4 (NV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
       }
 
       //4:4 (NØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
       }
 
       //4:4 (SV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
       }
 
       //4:4 (SØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
+        wPieces[i].x = wPieces[i].x - (x2-x)*100;
+        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
       }
     }
 
