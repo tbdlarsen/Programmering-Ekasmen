@@ -29,10 +29,11 @@ class Pawn {
     //Update funktion som updatere en visuel firkant, som viser spillerens valgte brik, ud fra musens lokation
     update(){
 
-        //Musens position
+        //Musens position (firkant)
         this.distX = ceil(((this.x-mouseX)/width)*8);
         this.distY = ceil(((this.y-mouseY)/height)*8);
 
+        //Musens position (grid-koordinatsystem)
         this.distX2 = ceil(((mouseX)/width)*8);
         this.distY2 = ceil(((mouseY)/height)*8);
 
