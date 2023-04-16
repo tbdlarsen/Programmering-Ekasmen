@@ -166,7 +166,20 @@ function mousePressed() {
 
     print("x = " + x + " y = " + y);
       
-    //King - Mulige bevægelser 
+    wPiecesEgenskaber();
+
+
+  } 
+
+  pieceChosenNum = !pieceChosenNum;
+}
+
+
+
+
+function wPiecesEgenskaber() {
+
+//King - Mulige bevægelser 
       
       //1:8 (NV)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
@@ -401,10 +414,4 @@ function mousePressed() {
       }
     }
 
-
-
-  } 
-
-  pieceChosenNum = !pieceChosenNum;
 }
-
