@@ -42,7 +42,6 @@ class Pawn {
             this.distY < 1 && this.distY >= 0){
             fill(255,1,0);
             rect(this.x,this.y,100);
-            //rect(this.x,this.y,100)
         }
         
         //Musens koordinater i forhold til grid/spillepladen (8x8) 
