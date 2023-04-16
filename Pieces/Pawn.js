@@ -45,7 +45,7 @@ class Pawn {
         }
         
         //Musens koordinater i forhold til grid/spillepladen (8x8) 
-        print(this.distX2,this.distY2);
+        //print(this.distX2,this.distY2);
 
     }
 

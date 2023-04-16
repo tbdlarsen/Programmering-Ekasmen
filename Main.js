@@ -92,26 +92,39 @@ function startposition (){
   wPieces.push(new Queen(3,0)); //wPieces[1]
   bPieces.push(new Queen(3,7)); //bPieces[1]
 
-  for (let i = 0; i < 8 ; i++){
+  //Rook
+  for (let i = 0; i < 2 ; i++){
     if (i < 2){
-      //Rook
-      wPieces.push(new Rook(i*7,0)); //wPieces[2], 
-      bPieces.push(new Rook(i*7,7)); //bPieces[2],
+      wPieces.push(new Rook(i*7,0)); //wPieces[2], wPieces[3] 
+      bPieces.push(new Rook(i*7,7)); //bPieces[2], wPieces[4]
+    }
+  }    
+  
+  //Knight
+  for (let i = 0; i < 2 ; i++){
+    if (i < 2){
+      wPieces.push(new Knight(1+i*5,0)); //wPieces[4], wPieces[5] 
+      bPieces.push(new Knight(1+i*5,7)); //bPieces[4], wPieces[5]
       
-      //Knight
-      wPieces.push(new Knight(1+i*5,0)); //wPieces[3], 
-      bPieces.push(new Knight(1+i*5,7)); //bPieces[3], 
-      
-      //Bishop
-      wPieces.push(new Bishop(2+i*3,0)); //wPieces[4], 
-      bPieces.push(new Bishop(2+i*3,7)); //bPieces[4], 
+   }
   }
 
-    //Pawn
-    wPieces.push(new Pawn(i,1)); //wPieces[5], 
-    bPieces.push(new Pawn(i,6)); //bPieces[5], 
-    
+  //Bishop
+  for (let i = 0; i < 2 ; i++){
+    if (i < 2){
+      wPieces.push(new Bishop(2+i*3,0)); //wPieces[6], wPieces[7] 
+      bPieces.push(new Bishop(2+i*3,7)); //bPieces[6], bPieces[7] 
+    }
   }
+
+  //Pawn
+  for (let i = 0; i < 8 ; i++){
+    if (i < 8){
+    wPieces.push(new Pawn(i,1)); //wPieces[8..15]
+    bPieces.push(new Pawn(i,6)); //bPieces[8..15] 
+    }
+  }
+    
 }
 
 
@@ -155,49 +168,49 @@ function mousePressed() {
       
     //King - Mulige bevægelser 
       
-      //1:8
+      //1:8 (NV)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
         wPieces[0].x = wPieces[0].x - 100;
         wPieces[0].y = wPieces[0].y - 100; 
       }
 
-      //2:8
+      //2:8 (N)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
         wPieces[0].x = wPieces[0].x;
         wPieces[0].y = wPieces[0].y -100; 
       }
 
-      //3:8
+      //3:8 (NØ)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 1) {
         wPieces[0].x = wPieces[0].x + 100;
         wPieces[0].y = wPieces[0].y - 100; 
       }
 
-      //4:8
+      //4:8 (V)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 0) {
         wPieces[0].x = wPieces[0].x - 100;
         wPieces[0].y = wPieces[0].y; 
       }
 
-      //5:8
+      //5:8 (Ø)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 0) {
         wPieces[0].x = wPieces[0].x + 100;
         wPieces[0].y = wPieces[0].y; 
       }
 
-      //6:8
+      //6:8 (SV)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == -1) {
         wPieces[0].x = wPieces[0].x - 100;
         wPieces[0].y = wPieces[0].y + 100; 
       }
 
-      //7:8
+      //7:8 (S)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
         wPieces[0].x = wPieces[0].x;
         wPieces[0].y = wPieces[0].y + 100; 
       }
 
-      //8:8
+      //8:8 (SØ)
       if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == -1) {
         wPieces[0].x = wPieces[0].x + 100;
         wPieces[0].y = wPieces[0].y + 100; 
@@ -258,7 +271,7 @@ function mousePressed() {
 
 
     //Rook - Mulige bevægelser 
-    for(let i = 2; i < 3; i++){
+    for(let i = 2; i < 4; i++){
 
       //1:4 (N)
       if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
@@ -286,41 +299,40 @@ function mousePressed() {
     }
 
     
-    
+
     //Bishop - Mulige bevægelser 
-    for(let i = 6; i < 7; i++){
-
-      //1:4 (N)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:4 (V)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
+    for(let i = 4; i < 6; i++){
       
-      //3:4 (Ø)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      //4:4 (NV)
+      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
+        wPieces[1].x = wPieces[1].x - (x2-x)*100;
+        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
       }
 
-      //4:4 (S)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
+      //4:4 (NØ)
+      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
+        wPieces[1].x = wPieces[1].x - (x2-x)*100;
+        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      }
+
+      //4:4 (SV)
+      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
+        wPieces[1].x = wPieces[1].x - (x2-x)*100;
+        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
+      }
+
+      //4:4 (SØ)
+      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
+        wPieces[1].x = wPieces[1].x - (x2-x)*100;
+        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
       }
     }
 
 
-
-
+    
     //Pawn - Mulige bevægelser
       
-    for(let i = 7; i < 16; i++){
+    for(let i = 8; i < 16; i++){
       //1:2 (S + 1)
       if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
         wPieces[i].x = wPieces[i].x;
@@ -339,6 +351,5 @@ function mousePressed() {
   } 
 
   pieceChosenNum = !pieceChosenNum;
-  print(wPieces[9]);
 }
 
