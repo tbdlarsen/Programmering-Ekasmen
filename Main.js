@@ -11,6 +11,8 @@ let spritesheet;
 let positionX;
 let positionY;
 
+let num = false;
+
 //Preloader spritesheet så det klar til brug.
 function preload() {
   spritesheet = loadImage("Image/Spritesheet.png");
@@ -125,6 +127,48 @@ function spillerSkift() {
       circle(400,400,150);
     }
   }
+  
+
+}
+
+function mouseClicked(){
+  
+  
+      
+
+  if (num == false){
+    xCord = floor((mouseX/width)*8);
+    yCord = floor((mouseY/height)*8);
+    print(num);
+    
+  }
+
+  if (num == true){
+    newxCord = floor((mouseX/width)*8);
+    newyCord = floor((mouseY/height)*8);
+  
+    print (num);
+  
+    moveX = newxCord-xCord;
+    moveY = newyCord-yCord;
+  
+    print ("move " + moveX,moveY);
+  }
+
+  
+
+
+
+
+
+
+
+
+
+ num = !num
+  
+
+
 
 }
 
