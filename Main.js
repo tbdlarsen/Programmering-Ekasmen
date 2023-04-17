@@ -167,7 +167,7 @@ function mousePressed() {
     print("x = " + x + " y = " + y);
       
     wPiecesEgenskaber();
-
+    bPiecesEgenskaber();
 
   } 
 
@@ -413,5 +413,145 @@ function wPiecesEgenskaber() {
         wPieces[i].y = wPieces[i].y + 200; 
       }
     }
+
+}
+
+
+
+function bPiecesEgenskaber() {
+
+  //King - Mulige bevægelser 
+      
+
+       //1:8 (NV)
+       if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == -1) {
+        bPieces[0].x = bPieces[0].x - 100;
+        bPieces[0].y = bPieces[0].y + 100; 
+      }
+
+      //2:8 (N)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
+        bPieces[0].x = bPieces[0].x;
+        bPieces[0].y = bPieces[0].y + 100; 
+      }
+
+      //3:8 (NØ)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == -1) {
+        bPieces[0].x = bPieces[0].x + 100;
+        bPieces[0].y = bPieces[0].y + 100; 
+      }
+
+      //4:8 (V)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 0) {
+        bPieces[0].x = bPieces[0].x - 100;
+        bPieces[0].y = bPieces[0].y; 
+      }
+
+      //5:8 (Ø)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 0) {
+        bPieces[0].x = bPieces[0].x + 100;
+        bPieces[0].y = bPieces[0].y; 
+      }
+
+      //6:8 (SV)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
+        bPieces[0].x = bPieces[0].x - 100;
+        bPieces[0].y = bPieces[0].y - 100; 
+      }
+
+      //7:8 (S)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
+        bPieces[0].x = bPieces[0].x;
+        bPieces[0].y = bPieces[0].y -100; 
+      }
+
+      //8:8 (SØ)
+      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 1) {
+        bPieces[0].x = bPieces[0].x + 100;
+        bPieces[0].y = bPieces[0].y - 100; 
+      }
+
+
+
+    //Queen - Mulige bevægelser 
+      
+      //1:8 (NV)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //2:8 (N)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //3:8 (NØ)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //4:8 (V)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+      
+      //5:8 (Ø)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //6:8 (SV)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //7:8 (S)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+      //8:8 (SØ)
+      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
+        bPieces[1].x = bPieces[1].x - (x2-x)*100;
+        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
+      }
+
+
+    //Rook - Mulige bevægelser 
+    for(let i = 2; i < 4; i++){
+
+      //1:4 (N)
+      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
+        bPieces[i].x = bPieces[i].x - (x2-x)*100;
+        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
+      }
+
+      //2:4 (V)
+      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
+        bPieces[i].x = bPieces[i].x - (x2-x)*100;
+        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
+      }
+      
+      //3:4 (Ø)
+      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
+        bPieces[i].x = bPieces[i].x - (x2-x)*100;
+        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
+      }
+
+      //4:4 (S)
+      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
+        bPieces[i].x = bPieces[i].x - (x2-x)*100;
+        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
+      }
+    }
+
+      
 
 }
