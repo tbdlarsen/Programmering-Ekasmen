@@ -1,7 +1,8 @@
 //Globale variabler
 
 //Boolean variabler
-pieceChosenNum = false;
+let pieceChosenNum = false;
+let spillerSkiftNum = false;
 
 //pieceChosen x og y variabler
 let x;
@@ -73,7 +74,8 @@ function draw() {
     
      
   //Funktioner som bliver kørt i draw()
-  spillerSkift(); 
+  
+  
  
 }
 
@@ -127,7 +129,7 @@ function startposition (){
     
 }
 
-
+/*
 //Funktion som har til formål at skifte tur mellem to spillere (skifter tur til næste spiller når brik er flyttet)
 function spillerSkift() {
 
@@ -149,6 +151,7 @@ function spillerSkift() {
   }
 
 }
+*/
 
 //Funktion som kun køre koden når man venstreklikker på musen
 function mousePressed() {
@@ -160,6 +163,7 @@ function mousePressed() {
     x2 = ceil(((mouseX)/width)*8);
     y2 = ceil(((mouseY)/height)*8);  
 
+    //Printer x2 og y2 koordinater
     print("x2 = " + x2 + " y2 = " + y2);
 
   }
@@ -171,13 +175,58 @@ function mousePressed() {
     x = ceil(((mouseX)/width)*8);
     y = ceil(((mouseY)/height)*8);
 
+    //Printer x og y koordinater
     print("x = " + x + " y = " + y);
     
-    //Køre funktioner som giver de hvide og sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)
-    wPiecesEgenskaber();
-    bPiecesEgenskaber();
+    //Køre funktioner som giver de hvide og sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
+    
+    //Hvid's tur
+    if (spillerSkiftNum == false) {
+      
+      wPiecesEgenskaber(); 
+      
+      //KILL - Tjekker om nogle af de hvide brikker har slået en sort brik ihjel, vha. to for lykker
+      for(let i = 0; i < 16; i++) {
+        for (let j = 0; j < 16; j++) {
+          if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
+            bPieces[j].y = bPieces[j].y + 800;
+          }
+        }
+      }
+      
+      //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
+      for(let i = 0; i < 16; i++) {
+        if(x == (wPieces[i].x+100)/100 && y == (wPieces[i].y+100)/100) {
+          spillerSkiftNum = true;
+        }
+      }
 
-  } 
+    }
+
+    //Sort's tur
+    if (spillerSkiftNum == true) {
+      
+      bPiecesEgenskaber(); 
+      
+      //KILL - Tjekker om nogle af de sorte brikker har slået en hvid brik ihjel, vha. to for lykker
+      for (let i = 0; i < 16; i++) {
+        for (let j = 0; j < 16; j++) {
+          if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
+            wPieces[i].y = wPieces[i].y + 800;
+          }
+        }
+      }
+
+      //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
+      for(let i = 0; i < 16; i++) {
+        if(x == (bPieces[i].x+100)/100 && y == (bPieces[i].y+100)/100) {
+          spillerSkiftNum = false;
+        }
+      }
+
+    }
+   
+  }  
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true)
   pieceChosenNum = !pieceChosenNum;
