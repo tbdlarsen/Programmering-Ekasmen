@@ -307,53 +307,7 @@ function wPiecesEgenskaber() {
 
 //King - Mulige bevægelser 
       
-      //1:8 (NV)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y - 100; 
-      }
-
-      //2:8 (N)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x;
-        wPieces[0].y = wPieces[0].y -100; 
-      }
-
-      //3:8 (NØ)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y - 100; 
-      }
-
-      //4:8 (V)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 0) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y; 
-      }
-
-      //5:8 (Ø)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 0) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y; 
-      }
-
-      //6:8 (SV)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
-
-      //7:8 (S)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
-
-      //8:8 (SØ)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
+      
 
 
 
@@ -412,10 +366,19 @@ function wPiecesEgenskaber() {
     //Rook - Mulige bevægelser 
     for(let i = 0; i < wPieces.length; i++){
 
+      //movement for konge
+      if(wPieces[i].piece == 0.025){
+        console.log(wPieces[i].piece);
+        wPieces[i].movement(x,x2,y,y2);
+      }
+
+      //movement for tårn
       if(wPieces[i].piece == 4.025){
         console.log(wPieces[i].piece);
         wPieces[i].Movement(x,x2,y,y2);
       }
+
+      //movement for pawn
       if(wPieces[i].piece ==5.02){
         console.log(wPieces[i].piece);
         wPieces[i].Movement(x,x2,y,y2);
