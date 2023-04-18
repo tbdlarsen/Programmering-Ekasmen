@@ -313,66 +313,24 @@ function wPiecesEgenskaber() {
 
     //Queen - Mulige bevægelser 
       
-      //1:8 (NV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //2:8 (N)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //3:8 (NØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //4:8 (V)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-      
-      //5:8 (Ø)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //6:8 (SV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //7:8 (S)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //8:8 (SØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
+     
     
 
 
     //Rook - Mulige bevægelser 
     for(let i = 0; i < wPieces.length; i++){
 
-      //movement for konge
+      //movement for king
       if(wPieces[i].piece == 0.025){
         console.log(wPieces[i].piece);
         wPieces[i].movement(x,x2,y,y2);
       }
 
-      //movement for tårn
+      //movement for queen
+
+
+
+      //movement for castle
       if(wPieces[i].piece == 4.025){
         console.log(wPieces[i].piece);
         wPieces[i].Movement(x,x2,y,y2);
@@ -383,6 +341,7 @@ function wPiecesEgenskaber() {
         console.log(wPieces[i].piece);
         wPieces[i].Movement(x,x2,y,y2);
       }
+      
 
       
     
