@@ -15,6 +15,8 @@ let y;
 let x2;
 let y2;
 
+//laver grid størrelse
+let gridSize = 100; 
 
 //Laver to arrays som indeholder de sorte og hvide Pieces
 let wPieces = [];
@@ -154,13 +156,13 @@ function mousePressed() {
       //Finder indixet til brikken, som har musens lokation x2 og y2 
 
       //Hvidt index
-      if((wPieces[i].x+100)/100 == x2 && (wPieces[i].y+100)/100 == y2){
+      if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d = i;
       }
 
       //Sort index
-      if((bPieces[i].x+100)/100 == x2 && (bPieces[i].y+100)/100 == y2){
+      if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d2 = i;
       }
@@ -183,13 +185,13 @@ function mousePressed() {
       //Finder indixet til brikken, som har musens lokation x og y 
 
       //Hvidt index
-      if((wPieces[i].x+100)/100 == x && (wPieces[i].y+100)/100 == y){
+      if((wPieces[i].x+gridSize)/gridSize == x && (wPieces[i].y+gridSize)/gridSize == y){
         //Angiver variablen e til at være lig med indexet af brikken
         e = i;
       }
 
       //Sort index
-      if((bPieces[i].x+100)/100 == x && (bPieces[i].y+100)/100 == y){
+      if((bPieces[i].x+gridSize)/gridSize == x && (bPieces[i].y+gridSize)/gridSize == y){
         //Angiver variablen e til at være lig med indexet af brikken
         e2 = i;
       }
@@ -215,7 +217,7 @@ function mousePressed() {
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
-        if(x == (wPieces[i].x+100)/100 && y == (wPieces[i].y+100)/100) {
+        if(x == (wPieces[i].x+gridSize)/gridSize && y == (wPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = true;
         }
       }
@@ -225,12 +227,12 @@ function mousePressed() {
         if(d > -1 && e > -1) {
 
           //Lad første brik stå
-          wPieces[d].x = (x2*100)-100;
-          wPieces[d].y = (y2*100)-100;
+          wPieces[d].x = (x2*gridSize)-gridSize;
+          wPieces[d].y = (y2*gridSize)-gridSize;
   
           //Lad anden brik stå
-          wPieces[e].x = (x*100)-100;
-          wPieces[e].y = (y*100)-100;
+          wPieces[e].x = (x*gridSize)-gridSize;
+          wPieces[e].y = (y*gridSize)-gridSize;
           
           //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
           d = -1;
@@ -262,7 +264,7 @@ function mousePressed() {
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
-        if(x == (bPieces[i].x+100)/100 && y == (bPieces[i].y+100)/100) {
+        if(x == (bPieces[i].x+gridSize)/gridSize && y == (bPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = false;
         }
       }
@@ -272,12 +274,12 @@ function mousePressed() {
       if(d2 > -1 && e2 > -1) {
 
         //Lad første brik stå
-        bPieces[d2].x = (x2*100)-100;
-        bPieces[d2].y = (y2*100)-100;
+        bPieces[d2].x = (x2*gridSize)-gridSize;
+        bPieces[d2].y = (y2*gridSize)-gridSize;
 
         //Lad anden brik stå
-        bPieces[e2].x = (x*100)-100;
-        bPieces[e2].y = (y*100)-100;
+        bPieces[e2].x = (x*gridSize)-gridSize;
+        bPieces[e2].y = (y*gridSize)-gridSize;
         
         //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
         d2 = -1;
@@ -408,31 +410,14 @@ function wPiecesEgenskaber() {
 
 
     //Rook - Mulige bevægelser 
-    for(let i = 2; i < 4; i++){
+    for(let i = 0; i < wPieces.length; i++){
 
-      //1:4 (N)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
+      if(wPieces[i].piece == 4.025)
+        wPieces[i].Movement();
 
-      //2:4 (V)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-      
-      //3:4 (Ø)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
+    
 
-      //4:4 (S)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
+
     }
 
 
