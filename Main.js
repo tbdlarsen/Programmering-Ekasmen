@@ -4,6 +4,9 @@
 let pieceChosenNum = false;
 let spillerSkiftNum = false;
 
+let d;
+let e;
+
 //pieceChosen x og y variabler
 let x;
 let y;
@@ -129,29 +132,7 @@ function startposition (){
     
 }
 
-/*
-//Funktion som har til formål at skifte tur mellem to spillere (skifter tur til næste spiller når brik er flyttet)
-function spillerSkift() {
 
-  //Spiler Boolean Variabel
-  let spiller = true;
-  let d = 5;
-
-  //Midlertidig spillerskifte, hvilket er markeret med en cirkel - Boolean if statements
-  if (positionX == 7 && positionY == 7 && d == 5) {
-  spiller = !spiller;
-  
-    if (spiller == false) {
-      circle(200,200,50);
-    }
-
-    else {
-      circle(400,400,150);
-    }
-  }
-
-}
-*/
 
 //Funktion som kun køre koden når man venstreklikker på musen
 function mousePressed() {
@@ -164,7 +145,16 @@ function mousePressed() {
     y2 = ceil(((mouseY)/height)*8);  
 
     //Printer x2 og y2 koordinater
-    print("x2 = " + x2 + " y2 = " + y2);
+    //print("x2 = " + x2 + " y2 = " + y2);
+
+    //Tjekker om der er en brik på mussens lokation x2 og y2
+    for (let i = 0; i < 16; i++) {
+      if((wPieces[i].x+100)/100 == x2 && (wPieces[i].y+100)/100 == y2){
+        d = i;
+      }
+    }
+
+    print("x2 og y2 = " + d)
 
   }
 
@@ -176,15 +166,32 @@ function mousePressed() {
     y = ceil(((mouseY)/height)*8);
 
     //Printer x og y koordinater
-    print("x = " + x + " y = " + y);
-    
+    //print("x = " + x + " y = " + y);
+
+    //Tjekker om der er en brik på mussens lokation x og y
+    for (let i = 0; i < 16; i++) {
+      if((wPieces[i].x+100)/100 == x && (wPieces[i].y+100)/100 == y){
+        e = i;
+      }
+    }
+
+    print("x og y = " + e)
+
     //Køre funktioner som giver de hvide og sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
     
     //Hvid's tur
     if (spillerSkiftNum == false) {
-      
+
       wPiecesEgenskaber(); 
       
+      
+      
+
+
+      
+
+      
+
       //KILL - Tjekker om nogle af de hvide brikker har slået en sort brik ihjel, vha. to for lykker
       for(let i = 0; i < 16; i++) {
         for (let j = 0; j < 16; j++) {
@@ -201,13 +208,35 @@ function mousePressed() {
         }
       }
 
+      //Nfsgfdsfds fd
+
+        /*
+        if(d == -1 && e == -1) {
+          spillerSkiftNum = false;
+        } 
+        */
+
+        if(d > -1 && e > -1) {
+          wPieces[d].x = (x2*100)-100;
+          wPieces[d].y = (y2*100)-100;
+  
+          wPieces[e].x = (x*100)-100;
+          wPieces[e].y = (y*100)-100;
+  
+          d = -1;
+          e = -1;
+          
+          spillerSkiftNum = !spillerSkiftNum;
+
+        }
+
     }
 
     //Sort's tur
     if (spillerSkiftNum == true) {
       
       bPiecesEgenskaber(); 
-      
+
       //KILL - Tjekker om nogle af de sorte brikker har slået en hvid brik ihjel, vha. to for lykker
       for (let i = 0; i < 16; i++) {
         for (let j = 0; j < 16; j++) {
