@@ -79,7 +79,7 @@ function draw() {
     
      
   //Funktioner som bliver kørt i draw()
-  
+  winCheck();
   
  
 }
@@ -295,6 +295,26 @@ function mousePressed() {
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
   pieceChosenNum = !pieceChosenNum;
+
+}
+
+function winCheck() {
+
+  //Tjekker om hvid vinder
+  if (wPieces[0].y >= 800) {
+    textFont("Georgia")
+    textSize(100);
+    textAlign(CENTER);
+    text("HVID VINDER",width/2,height/2)
+  }
+
+  //Tjekker om sort vinder
+  if (bPieces[0].y >= 800) {
+    textFont("Georgia")
+    textSize(100);
+    textAlign(CENTER);
+    text("SORT VINDER",width/2,height/2)
+  }
 
 }
 
