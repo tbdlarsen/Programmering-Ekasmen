@@ -6,6 +6,7 @@ class Piece {
 
         //Spritesheet
         this.spritesheet;
+        this.grid = 100;
        
         //Størrelse på spritesheet
         this.billedWidth = 640;
