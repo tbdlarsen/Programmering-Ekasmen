@@ -12,27 +12,27 @@ class Rook extends Piece{
         
     }
 
-    Movement(){
+    Movement(x,x2,y,y2){
 
        //1:4 (N)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y >= 1) {
-        this.y += (y2-y)*100; 
+        this.y += (y2-y)*this.grid; 
       }
 
       //2:4 (V)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y >= 1) {
-        this.x -= (x2-x)*100;
+        this.x -= (x2-x)*this.grid;
       }
         
       
       //3:4 (Ø)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y >= 1) {
-        this.x += (x2-x)*100;
+        this.x += (x2-x)*this.grid;
       }
       
       //4:4 (S)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y >= 1) {
-        this.y -= (x2-x)*100;
+        this.y -= (x2-x)*this.grid;
       }
 
 

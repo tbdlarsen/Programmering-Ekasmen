@@ -412,9 +412,16 @@ function wPiecesEgenskaber() {
     //Rook - Mulige bevægelser 
     for(let i = 0; i < wPieces.length; i++){
 
-      if(wPieces[i].piece == 4.025)
-        wPieces[i].Movement();
+      if(wPieces[i].piece == 4.025){
+        console.log(wPieces[i].piece);
+        wPieces[i].Movement(x,x2,y,y2);
+      }
+      if(wPieces[i].piece ==5.02){
+        console.log(wPieces[i].piece);
+        wPieces[i].Movement(x,x2,y,y2);
+      }
 
+      
     
 
 
@@ -507,21 +514,7 @@ function wPiecesEgenskaber() {
 
 
     
-    //Pawn - Mulige bevægelser
-      
-    for(let i = 8; i < 16; i++){
-      //1:2 (S + 1)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
-        wPieces[i].x = wPieces[i].x;
-        wPieces[i].y = wPieces[i].y + 100; 
-      }
-
-      //2:2 (S + 2)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == -2) {
-        wPieces[i].x = wPieces[i].x;
-        wPieces[i].y = wPieces[i].y + 200; 
-      }
-    }
+    
 }
 
 
