@@ -1,5 +1,5 @@
 //Rook som er nedarvet af pawn
-class Rook extends Pawn{
+class Rook extends Piece{
 
     //Rook constructor
     constructor(x,y){

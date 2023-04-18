@@ -1,5 +1,5 @@
 //Class Queen som er nedarvet af pawn
-class Queen extends Pawn{
+class Queen extends Piece{
 
     //Queen constructor
     constructor(x,y){

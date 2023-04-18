@@ -1,5 +1,5 @@
 //Bishop som er nedarvet af pawn
-class Bishop extends Pawn{
+class Bishop extends Piece{
 
     //Bishop constructor
     constructor(x,y){

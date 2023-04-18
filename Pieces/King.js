@@ -1,5 +1,5 @@
 //King som er nedarvet af pawn
-class King extends Pawn{
+class King extends Piece{
 
     //King constructor
     constructor(x,y){
