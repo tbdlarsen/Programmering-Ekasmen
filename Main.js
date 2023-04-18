@@ -52,6 +52,19 @@ function draw() {
   background(220);
   stroke(54);
 
+  //Farver de ternede felter
+  push();
+  //Light Ash Brown Farve
+  fill(151,121,97);
+  tileDark();
+  pop();
+
+  push();
+  //Lighest Blorde Farve
+  fill(233,206,166);
+  tileLight();
+  pop();
+
   //Laver spillebræt med linjer
   for (let i = 1; i <= 7; i++){
     line((width/8)*i,0,(width/8)*i, height);
@@ -298,27 +311,78 @@ function mousePressed() {
 
 }
 
+
+
 function winCheck() {
 
   //Tjekker om hvid vinder
-  if (wPieces[0].y >= 800) {
+  if (bPieces[0].y >= 800) {
+    push();
+    strokeWeight(10);
+    stroke(0);
+    fill(0,170,255);
     textFont("Georgia")
     textSize(100);
     textAlign(CENTER);
     text("HVID VINDER",width/2,height/2)
+    pop()
   }
 
   //Tjekker om sort vinder
-  if (bPieces[0].y >= 800) {
+  if (wPieces[0].y >= 800) {
+    push()
+    strokeWeight(10);
+    stroke(0);
+    fill(0,170,255);
     textFont("Georgia")
     textSize(100);
     textAlign(CENTER);
     text("SORT VINDER",width/2,height/2)
+    pop();
   }
 
 }
 
 
+//Funktion for de mørke ternet firkanter på brættet
+function tileDark() {
+  
+  //Angiver tern koordinater
+  let ternX = 0;
+  let ternY = 0;
+
+  //For loops som gør at felte bliver ternet
+  for(let i = 0; i < 4; i++) {
+    for(let j = 0; j < 4; j++) {
+      rect(ternX + 100+(200*j), ternY+(200*i),100);
+    }
+    
+    for(let j = 0; j < 4; j++) {
+      rect(ternX +(200*j), ternY+100+(200*i),100);
+    }
+  }
+}
+
+  //Funktion for de mørke ternet firkanter på brættet
+  function tileLight() {
+
+    //Angiver tern koordinater
+    let ternX = 0;
+    let ternY = 0;
+
+    //For loops som gør at felte bliver ternet
+    for(let i = 0; i < 4; i++) {
+      for(let j = 0; j < 4; j++) {
+        rect(ternX +(200*j), ternY+(200*i),100);
+      }
+      
+      for(let j = 0; j < 4; j++) {
+        rect(ternX + 100+(200*j), ternY+100+(200*i),100);
+      }
+    }
+  }
+
+  
 
 //Funktion som giver alle de hvide pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)
 function wPiecesEgenskaber() {
