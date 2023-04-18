@@ -6,6 +6,8 @@ let spillerSkiftNum = false;
 
 let d;
 let e;
+let d2;
+let e2;
 
 //pieceChosen x og y variabler
 let x;
@@ -145,16 +147,24 @@ function mousePressed() {
     y2 = ceil(((mouseY)/height)*8);  
 
     //Printer x2 og y2 koordinater
-    //print("x2 = " + x2 + " y2 = " + y2);
+    print("x2 = " + x2 + " y2 = " + y2);
 
-    //Tjekker om der er en brik på mussens lokation x2 og y2
+    //Tjekker om der er en brik på musens lokation x2 og y2
     for (let i = 0; i < 16; i++) {
+      //Finder indixet til brikken, som har musens lokation x2 og y2 
+
+      //Hvidt index
       if((wPieces[i].x+100)/100 == x2 && (wPieces[i].y+100)/100 == y2){
+        //Angiver variablen d til at være lig med indexet af brikken
         d = i;
       }
-    }
 
-    print("x2 og y2 = " + d)
+      //Sort index
+      if((bPieces[i].x+100)/100 == x2 && (bPieces[i].y+100)/100 == y2){
+        //Angiver variablen d til at være lig med indexet af brikken
+        d2 = i;
+      }
+    }
 
   }
 
@@ -166,31 +176,32 @@ function mousePressed() {
     y = ceil(((mouseY)/height)*8);
 
     //Printer x og y koordinater
-    //print("x = " + x + " y = " + y);
+    print("x = " + x + " y = " + y);
 
     //Tjekker om der er en brik på mussens lokation x og y
     for (let i = 0; i < 16; i++) {
+      //Finder indixet til brikken, som har musens lokation x og y 
+
+      //Hvidt index
       if((wPieces[i].x+100)/100 == x && (wPieces[i].y+100)/100 == y){
+        //Angiver variablen e til at være lig med indexet af brikken
         e = i;
       }
+
+      //Sort index
+      if((bPieces[i].x+100)/100 == x && (bPieces[i].y+100)/100 == y){
+        //Angiver variablen e til at være lig med indexet af brikken
+        e2 = i;
+      }
     }
-
-    print("x og y = " + e)
-
-    //Køre funktioner som giver de hvide og sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
     
+
     //Hvid's tur
     if (spillerSkiftNum == false) {
 
+      //Køre funktionen som giver de hvide pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
       wPiecesEgenskaber(); 
-      
-      
-      
 
-
-      
-
-      
 
       //KILL - Tjekker om nogle af de hvide brikker har slået en sort brik ihjel, vha. to for lykker
       for(let i = 0; i < 16; i++) {
@@ -201,6 +212,7 @@ function mousePressed() {
         }
       }
       
+
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
         if(x == (wPieces[i].x+100)/100 && y == (wPieces[i].y+100)/100) {
@@ -208,24 +220,23 @@ function mousePressed() {
         }
       }
 
-      //Nfsgfdsfds fd
 
-        /*
-        if(d == -1 && e == -1) {
-          spillerSkiftNum = false;
-        } 
-        */
-
+      //Tjekker om to hvide brikker står oven i hinanden, hvis ja vil indexit gå fra 0-15 og hvis nej vil indexet være -1
         if(d > -1 && e > -1) {
+
+          //Lad første brik stå
           wPieces[d].x = (x2*100)-100;
           wPieces[d].y = (y2*100)-100;
   
+          //Lad anden brik stå
           wPieces[e].x = (x*100)-100;
           wPieces[e].y = (y*100)-100;
-  
+          
+          //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
           d = -1;
           e = -1;
           
+          //Ændre spileSkiftNum som er en boolean variable til den omvendte tilstand (Turen går ikke videre, hvis den if-statement er sant, da man tidligere ændre den samme boolean variabel's tilstand)
           spillerSkiftNum = !spillerSkiftNum;
 
         }
@@ -235,7 +246,9 @@ function mousePressed() {
     //Sort's tur
     if (spillerSkiftNum == true) {
       
+      //Køre funktionen som giver de sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
       bPiecesEgenskaber(); 
+
 
       //KILL - Tjekker om nogle af de sorte brikker har slået en hvid brik ihjel, vha. to for lykker
       for (let i = 0; i < 16; i++) {
@@ -246,6 +259,7 @@ function mousePressed() {
         }
       }
 
+
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
         if(x == (bPieces[i].x+100)/100 && y == (bPieces[i].y+100)/100) {
@@ -253,11 +267,33 @@ function mousePressed() {
         }
       }
 
+
+      //Tjekker om to sorte brikker står oven i hinanden, hvis ja vil indexit gå fra 0-15 og hvis nej vil indexet være -1
+      if(d2 > -1 && e2 > -1) {
+
+        //Lad første brik stå
+        bPieces[d2].x = (x2*100)-100;
+        bPieces[d2].y = (y2*100)-100;
+
+        //Lad anden brik stå
+        bPieces[e2].x = (x*100)-100;
+        bPieces[e2].y = (y*100)-100;
+        
+        //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
+        d2 = -1;
+        e2 = -1;
+        
+        //Ændre spileSkiftNum som er en boolean variable til den omvendte tilstand (Turen går ikke videre, hvis den if-statement er sant, da man tidligere ændre den samme boolean variabel's tilstand)
+        spillerSkiftNum = !spillerSkiftNum;
+
+      }
+
+
     }
    
   }  
 
-  //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true)
+  //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
   pieceChosenNum = !pieceChosenNum;
 
 }
