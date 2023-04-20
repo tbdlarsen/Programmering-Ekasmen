@@ -15,6 +15,8 @@ let y;
 let x2;
 let y2;
 
+//laver grid størrelse
+let gridSize = 100; 
 
 //Laver to arrays som indeholder de sorte og hvide Pieces
 let wPieces = [];
@@ -167,13 +169,13 @@ function mousePressed() {
       //Finder indixet til brikken, som har musens lokation x2 og y2 
 
       //Hvidt index
-      if((wPieces[i].x+100)/100 == x2 && (wPieces[i].y+100)/100 == y2){
+      if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d = i;
       }
 
       //Sort index
-      if((bPieces[i].x+100)/100 == x2 && (bPieces[i].y+100)/100 == y2){
+      if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d2 = i;
       }
@@ -190,19 +192,20 @@ function mousePressed() {
 
     //Printer x og y koordinater
     print("x = " + x + " y = " + y);
+    
 
     //Tjekker om der er en brik på mussens lokation x og y
     for (let i = 0; i < 16; i++) {
       //Finder indixet til brikken, som har musens lokation x og y 
 
       //Hvidt index
-      if((wPieces[i].x+100)/100 == x && (wPieces[i].y+100)/100 == y){
+      if((wPieces[i].x+gridSize)/gridSize == x && (wPieces[i].y+gridSize)/gridSize == y){
         //Angiver variablen e til at være lig med indexet af brikken
         e = i;
       }
 
       //Sort index
-      if((bPieces[i].x+100)/100 == x && (bPieces[i].y+100)/100 == y){
+      if((bPieces[i].x+gridSize)/gridSize == x && (bPieces[i].y+gridSize)/gridSize == y){
         //Angiver variablen e til at være lig med indexet af brikken
         e2 = i;
       }
@@ -228,7 +231,7 @@ function mousePressed() {
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
-        if(x == (wPieces[i].x+100)/100 && y == (wPieces[i].y+100)/100) {
+        if(x == (wPieces[i].x+gridSize)/gridSize && y == (wPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = true;
         }
       }
@@ -238,12 +241,12 @@ function mousePressed() {
         if(d > -1 && e > -1) {
 
           //Lad første brik stå
-          wPieces[d].x = (x2*100)-100;
-          wPieces[d].y = (y2*100)-100;
+          wPieces[d].x = (x2*gridSize)-gridSize;
+          wPieces[d].y = (y2*gridSize)-gridSize;
   
           //Lad anden brik stå
-          wPieces[e].x = (x*100)-100;
-          wPieces[e].y = (y*100)-100;
+          wPieces[e].x = (x*gridSize)-gridSize;
+          wPieces[e].y = (y*gridSize)-gridSize;
           
           //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
           d = -1;
@@ -275,7 +278,7 @@ function mousePressed() {
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
       for(let i = 0; i < 16; i++) {
-        if(x == (bPieces[i].x+100)/100 && y == (bPieces[i].y+100)/100) {
+        if(x == (bPieces[i].x+gridSize)/gridSize && y == (bPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = false;
         }
       }
@@ -285,12 +288,12 @@ function mousePressed() {
       if(d2 > -1 && e2 > -1) {
 
         //Lad første brik stå
-        bPieces[d2].x = (x2*100)-100;
-        bPieces[d2].y = (y2*100)-100;
+        bPieces[d2].x = (x2*gridSize)-gridSize;
+        bPieces[d2].y = (y2*gridSize)-gridSize;
 
         //Lad anden brik stå
-        bPieces[e2].x = (x*100)-100;
-        bPieces[e2].y = (y*100)-100;
+        bPieces[e2].x = (x*gridSize)-gridSize;
+        bPieces[e2].y = (y*gridSize)-gridSize;
         
         //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
         d2 = -1;
@@ -308,7 +311,7 @@ function mousePressed() {
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
   pieceChosenNum = !pieceChosenNum;
-
+  print(spillerSkiftNum);
 }
 
 
@@ -385,479 +388,28 @@ function tileDark() {
   
 
 //Funktion som giver alle de hvide pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)
-function wPiecesEgenskaber() {
+function wPiecesEgenskaber() { 
+  for(let i = 0; i < wPieces.length; i++){
+    if(wPieces[i].piece == 5.02){
+      wPieces[i].Movement(x,x2,y,y2,1);
 
-//King - Mulige bevægelser 
       
-      //1:8 (NV)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y - 100; 
-      }
-
-      //2:8 (N)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x;
-        wPieces[0].y = wPieces[0].y -100; 
-      }
-
-      //3:8 (NØ)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 1) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y - 100; 
-      }
-
-      //4:8 (V)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 0) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y; 
-      }
-
-      //5:8 (Ø)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 0) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y; 
-      }
-
-      //6:8 (SV)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x - 100;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
-
-      //7:8 (S)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
-
-      //8:8 (SØ)
-      if((wPieces[0].x + 100)/100 == x2 && (wPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == -1) {
-        wPieces[0].x = wPieces[0].x + 100;
-        wPieces[0].y = wPieces[0].y + 100; 
-      }
-
-
-
-    //Queen - Mulige bevægelser 
-      
-      //1:8 (NV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //2:8 (N)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //3:8 (NØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //4:8 (V)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-      
-      //5:8 (Ø)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //6:8 (SV)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //7:8 (S)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-
-      //8:8 (SØ)
-      if((wPieces[1].x + 100)/100 == x2 && (wPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        wPieces[1].x = wPieces[1].x - (x2-x)*100;
-        wPieces[1].y = wPieces[1].y - (y2-y)*100; 
-      }
-    
-
-
-    //Rook - Mulige bevægelser 
-    for(let i = 2; i < 4; i++){
-
-      //1:4 (N)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:4 (V)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-      
-      //3:4 (Ø)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (S)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
+    }else{
+      wPieces[i].Movement(x,x2,y,y2);
     }
+  
+  }   
+}
 
+function bPiecesEgenskaber() { 
+  for(let i = 0; i < bPieces.length; i++){
+    if(bPieces[i].piece == 5.02){
+      bPieces[i].Movement(x,x2,y,y2,-1);
 
-
-    //Knight - Mulige bevægelser 
-    for(let i = 4; i < 6; i++){
-
-      //1:8 (N:V)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == 2) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:8 (N:Ø)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == 2) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //3:8 (V:N)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:8 (V:S)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //5:8 (Ø:N)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //6:8 (Ø:S)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //7:8 (S:V)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == -2) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //8:8 (S:Ø)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == -2) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-    }
-
-
-
-    //Bishop - Mulige bevægelser 
-    for(let i = 6; i < 8; i++){
-      
-      //4:4 (NV)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (NØ)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (SV)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (SØ)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        wPieces[i].x = wPieces[i].x - (x2-x)*100;
-        wPieces[i].y = wPieces[i].y - (y2-y)*100; 
-      }
-    }
-
-
-    
-    //Pawn - Mulige bevægelser
-      
-    for(let i = 8; i < 16; i++){
-      //1:2 (S + 1)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
-        wPieces[i].x = wPieces[i].x;
-        wPieces[i].y = wPieces[i].y + 100; 
-      }
-
-      //2:2 (S + 2)
-      if((wPieces[i].x + 100)/100 == x2 && (wPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == -2) {
-        wPieces[i].x = wPieces[i].x;
-        wPieces[i].y = wPieces[i].y + 200; 
-      }
-    }
+    }else{
+      bPieces[i].Movement(x,x2,y,y2);
+    }   
+  }
 }
 
 
-
-//Funktion som giver alle de hvide pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)
-function bPiecesEgenskaber() {
-
-  //King - Mulige bevægelser 
-      
-       //1:8 (NV)
-       if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == -1) {
-        bPieces[0].x = bPieces[0].x - 100;
-        bPieces[0].y = bPieces[0].y + 100; 
-      }
-
-      //2:8 (N)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == -1) {
-        bPieces[0].x = bPieces[0].x;
-        bPieces[0].y = bPieces[0].y + 100; 
-      }
-
-      //3:8 (NØ)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == -1) {
-        bPieces[0].x = bPieces[0].x + 100;
-        bPieces[0].y = bPieces[0].y + 100; 
-      }
-
-      //4:8 (V)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 0) {
-        bPieces[0].x = bPieces[0].x - 100;
-        bPieces[0].y = bPieces[0].y; 
-      }
-
-      //5:8 (Ø)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 0) {
-        bPieces[0].x = bPieces[0].x + 100;
-        bPieces[0].y = bPieces[0].y; 
-      }
-
-      //6:8 (SV)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 1 && y2-y == 1) {
-        bPieces[0].x = bPieces[0].x - 100;
-        bPieces[0].y = bPieces[0].y - 100; 
-      }
-
-      //7:8 (S)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
-        bPieces[0].x = bPieces[0].x;
-        bPieces[0].y = bPieces[0].y -100; 
-      }
-
-      //8:8 (SØ)
-      if((bPieces[0].x + 100)/100 == x2 && (bPieces[0].y + 100)/100 == y2 && x2-x == -1 && y2-y == 1) {
-        bPieces[0].x = bPieces[0].x + 100;
-        bPieces[0].y = bPieces[0].y - 100; 
-      }
-
-
-
-    //Queen - Mulige bevægelser 
-      
-      //1:8 (NV)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //2:8 (N)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //3:8 (NØ)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //4:8 (V)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-      
-      //5:8 (Ø)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //6:8 (SV)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //7:8 (S)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-      //8:8 (SØ)
-      if((bPieces[1].x + 100)/100 == x2 && (bPieces[1].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        bPieces[1].x = bPieces[1].x - (x2-x)*100;
-        bPieces[1].y = bPieces[1].y - (y2-y)*100; 
-      }
-
-
-    //Rook - Mulige bevægelser 
-    for(let i = 2; i < 4; i++){
-
-      //1:4 (N)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y <= -1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:4 (V)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y == 0) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-      
-      //3:4 (Ø)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y == 0) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (S)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y >= 1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-    }
-
-
-
-    //Knight - Mulige bevægelser 
-    for(let i = 4; i < 6; i++){
-
-      //1:8 (N:V)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == -2) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:8 (N:Ø)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == -2) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //3:8 (V:N)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == 1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:8 (V:S)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 2 && y2-y == -1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //5:8 (Ø:N)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == 1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //6:8 (Ø:S)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == -2 && y2-y == -1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //7:8 (S:V)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 1 && y2-y == 2) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //8:8 (S:Ø)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == -1 && y2-y == 2) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-    }
-
-
-
-    //Bishop - Mulige bevægelser 
-    for(let i = 6; i < 8; i++){
-      
-      //1:4 (NV)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //2:4 (NØ)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //3:4 (SV)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-
-      //4:4 (SØ)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x <= 1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-        bPieces[i].x = bPieces[i].x - (x2-x)*100;
-        bPieces[i].y = bPieces[i].y - (y2-y)*100; 
-      }
-    }
-
-
-    
-    //Pawn - Mulige bevægelser
-      
-    for(let i = 8; i < 16; i++){
-      //1:2 (S + 1)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == 1) {
-        bPieces[i].x = bPieces[i].x;
-        bPieces[i].y = bPieces[i].y - 100; 
-      }
-
-      //2:2 (S + 2)
-      if((bPieces[i].x + 100)/100 == x2 && (bPieces[i].y + 100)/100 == y2 && x2-x == 0 && y2-y == 2) {
-        bPieces[i].x = bPieces[i].x;
-        bPieces[i].y = bPieces[i].y - 200; 
-      }
-    }
-}

@@ -1,55 +1,35 @@
-//Clas Pawn
-class Pawn {
 
-    //Pawn constructor
-    constructor(x,y) {
 
-        //Spritesheet
-        this.spritesheet;
-       
-        //Størrelse på spritesheet
-        this.billedWidth = 640;
-        this.billedHeight = 213;
+//Knight som er nedarvet af pawn
+class Pawn extends Piece{
 
-        //Position af billede og brik
-        this.x = x*(width/8);
-        this.y = y*(height/8);
+    //Knight constructor
+    constructor(x,y){
+
+        //Super() bliver brugt til at fremkalde contructoren fra Pawn (Forældre), hvilket gør at der er tiladselse til brugen af Pawn constructorens egenskaber 
+        super(x,y);
 
         //Lokation i forhold til spritesheet (justeret med 0,020 for at brikkerne står perfekt i midtel af deres felt)
         this.piece = 5.020;
-    }
-
-
-    //Visual funktion som viser en del af spritesheetet. 
-    visual(color){    
-        image(spritesheet,this.x,this.y,this.billedWidth/6,this.billedHeight/2,
-        this.piece*(this.billedWidth/6),color*(this.billedHeight/2),1*(this.billedWidth/6),1*(this.billedHeight/2)); //Syntax: Refference image() nederst    
-    }
-    
-    //Update funktion som updatere en visuel firkant, som viser spillerens valgte brik, ud fra musens lokation
-    update(){
-
-        //Musens position (firkant)
-        this.distX = ceil(((this.x-mouseX)/width)*8);
-        this.distY = ceil(((this.y-mouseY)/height)*8);
-
-        //Musens position (grid-koordinatsystem)
-        this.distX2 = ceil(((mouseX)/width)*8);
-        this.distY2 = ceil(((mouseY)/height)*8);
-
-        //if statement som viser en visuel firkant bag den brik som spillerens mus er på
-        if (this.distX < 1 && this.distX >= 0 &&
-            this.distY < 1 && this.distY >= 0){
-            fill(255,1,0);
-            rect(this.x,this.y,100);
-        }
-        
-        //Musens koordinater i forhold til grid/spillepladen (8x8) 
-        //print(this.distX2,this.distY2);
 
     }
+   
+    Movement(x,x2,y,y2,color){
+        //color sort = -1
+        //color hvid = 1
+
+
+
+        //Mulige bevægelser
+            //1:2 (S + 1)
+            if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y == -1*color) {
+            this.y += this.grid*color; 
+            }
+            //2:2 (S + 2)
+            if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y == -2*color) {
+                this.y += this.grid*2*color; 
+            }
+    }
+
 
 }
-
-
-
