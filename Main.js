@@ -4,10 +4,10 @@
 let pieceChosenNum = false;
 let spillerSkiftNum = false;
 
-let d;
-let e;
-let d2;
-let e2;
+let d = [];
+let e = [];
+
+
 
 //pieceChosen x og y variabler
 let x;
@@ -164,22 +164,13 @@ function mousePressed() {
     //Printer x2 og y2 koordinater
     print("x2 = " + x2 + " y2 = " + y2);
 
-    //Tjekker om der er en brik på musens lokation x2 og y2
-    for (let i = 0; i < 16; i++) {
-      //Finder indixet til brikken, som har musens lokation x2 og y2 
+    d = findIndex(x2,y2);
 
-      //Hvidt index
-      if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
-        //Angiver variablen d til at være lig med indexet af brikken
-        d = i;
-      }
-
-      //Sort index
-      if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
-        //Angiver variablen d til at være lig med indexet af brikken
-        d2 = i;
-      }
-    }
+   
+    
+    
+    
+    
 
   }
 
@@ -193,22 +184,10 @@ function mousePressed() {
     //Printer x og y koordinater
     print("x = " + x + " y = " + y);
     
+    e = findIndex(x,y);
+    
+    
 
-    //Tjekker om der er en brik på mussens lokation x og y
-    for (let i = 0; i < 16; i++) {
-      //Finder indixet til brikken, som har musens lokation x og y 
-
-      //Hvidt index
-      if((wPieces[i].x+gridSize)/gridSize == x && (wPieces[i].y+gridSize)/gridSize == y){
-        //Angiver variablen e til at være lig med indexet af brikken
-        e = i;
-      }
-
-      //Sort index
-      if((bPieces[i].x+gridSize)/gridSize == x && (bPieces[i].y+gridSize)/gridSize == y){
-        //Angiver variablen e til at være lig med indexet af brikken
-        e2 = i;
-      }
     }
     
 
@@ -219,43 +198,55 @@ function mousePressed() {
       wPiecesEgenskaber(); 
 
 
+      
+
+
+
       //KILL - Tjekker om nogle af de hvide brikker har slået en sort brik ihjel, vha. to for lykker
-      for(let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+      for(let i = 0; i < wPieces.length; i++) {
+        for (let j = 0; j < bPieces.length; j++) {
           if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
-            bPieces[j].y = bPieces[j].y + 800;
+            bPieces.splice(j,1);
+            spillerSkiftNum = true;
           }
         }
       }
       
 
-      //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
-      for(let i = 0; i < 16; i++) {
-        if(x == (wPieces[i].x+gridSize)/gridSize && y == (wPieces[i].y+gridSize)/gridSize) {
-          spillerSkiftNum = true;
-        }
-      }
+      
 
-
+      
       //Tjekker om to hvide brikker står oven i hinanden, hvis ja vil indexit gå fra 0-15 og hvis nej vil indexet være -1
-        if(d > -1 && e > -1) {
+        if(d[0] > -1 && e[0] > -1) {
 
           //Lad første brik stå
-          wPieces[d].x = (x2*gridSize)-gridSize;
-          wPieces[d].y = (y2*gridSize)-gridSize;
+          wPieces[d[0]].x = (x2*gridSize)-gridSize;
+          wPieces[d[0]].y = (y2*gridSize)-gridSize;
   
           //Lad anden brik stå
-          wPieces[e].x = (x*gridSize)-gridSize;
-          wPieces[e].y = (y*gridSize)-gridSize;
+          wPieces[e[0]].x = (x*gridSize)-gridSize;
+          wPieces[e[0]].y = (y*gridSize)-gridSize;
           
           //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
-          d = -1;
-          e = -1;
+          d[0] = -1;
+          e[0] = -1;
           
           //Ændre spileSkiftNum som er en boolean variable til den omvendte tilstand (Turen går ikke videre, hvis den if-statement er sant, da man tidligere ændre den samme boolean variabel's tilstand)
-          spillerSkiftNum = !spillerSkiftNum;
+          spillerSkiftNum = false;
+
+        }else {
+          //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
+         for(let i = 0; i < wPieces.length; i++) {
+          if(x == (wPieces[i].x+gridSize)/gridSize && y == (wPieces[i].y+gridSize)/gridSize) {
+            spillerSkiftNum = true;
+          }
 
         }
+
+      
+      }
+        print("d " + d);
+        print("e " + e);
 
     }
 
@@ -265,49 +256,56 @@ function mousePressed() {
       //Køre funktionen som giver de sorte pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)    
       bPiecesEgenskaber(); 
 
+      
+
+   
 
       //KILL - Tjekker om nogle af de sorte brikker har slået en hvid brik ihjel, vha. to for lykker
-      for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+      for (let i = 0; i < wPieces.length; i++) {
+        for (let j = 0; j < bPieces.length; j++) {
           if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
-            wPieces[i].y = wPieces[i].y + 800;
+            print(wPieces[i]);
+            wPieces.splice(i,1);
+            spillerSkiftNum = false;
+
           }
         }
       }
 
 
+      
+
+      
+      //Tjekker om to sorte brikker står oven i hinanden, hvis ja vil indexit gå fra 0-15 og hvis nej vil indexet være -1
+      if(d[1] > -1 && e[1] > -1) {
+
+        //Lad første brik stå
+        bPieces[d[1]].x = (x2*gridSize)-gridSize;
+        bPieces[d[1]].y = (y2*gridSize)-gridSize;
+
+        //Lad anden brik stå
+        bPieces[e[1]].x = (x*gridSize)-gridSize;
+        bPieces[e[1]].y = (y*gridSize)-gridSize;
+        
+        //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
+        d[1] = -1;
+        e[1] = -1;
+        
+        //Ændre spileSkiftNum som er en boolean variable til den omvendte tilstand (Turen går ikke videre, hvis den if-statement er sant, da man tidligere ændre den samme boolean variabel's tilstand)
+        spillerSkiftNum = true;
+
+      }
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
-      for(let i = 0; i < 16; i++) {
+      for(let i = 0; i < bPieces.length; i++) {
         if(x == (bPieces[i].x+gridSize)/gridSize && y == (bPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = false;
         }
       }
-
-
-      //Tjekker om to sorte brikker står oven i hinanden, hvis ja vil indexit gå fra 0-15 og hvis nej vil indexet være -1
-      if(d2 > -1 && e2 > -1) {
-
-        //Lad første brik stå
-        bPieces[d2].x = (x2*gridSize)-gridSize;
-        bPieces[d2].y = (y2*gridSize)-gridSize;
-
-        //Lad anden brik stå
-        bPieces[e2].x = (x*gridSize)-gridSize;
-        bPieces[e2].y = (y*gridSize)-gridSize;
-        
-        //Nulstiller variablerne d og e til et tal som ikke er en del af brikkernes array
-        d2 = -1;
-        e2 = -1;
-        
-        //Ændre spileSkiftNum som er en boolean variable til den omvendte tilstand (Turen går ikke videre, hvis den if-statement er sant, da man tidligere ændre den samme boolean variabel's tilstand)
-        spillerSkiftNum = !spillerSkiftNum;
-
-      }
-
+      
 
     }
    
-  }  
+   
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
   pieceChosenNum = !pieceChosenNum;
@@ -410,6 +408,32 @@ function bPiecesEgenskaber() {
       bPieces[i].Movement(x,x2,y,y2);
     }   
   }
+}
+
+function findIndex(VarX,VarY){ 
+
+  let nums = [];
+  //Tjekker om der er en brik på musens lokation x2 og y2
+  for (let i = 0; i < wPieces.length; i++) {
+    for (let j = 0; j < bPieces.length; j++){
+
+      //Finder indixet til brikken, som har musens lokation x2 og y2 
+
+      //Hvidt index
+      if((wPieces[i].x+gridSize)/gridSize == VarX && (wPieces[i].y+gridSize)/gridSize == VarY){
+        //Angiver variablen d til at være lig med indexet af brikken
+        nums[0] = i;
+      }
+
+      //Sort index
+      if((bPieces[j].x+gridSize)/gridSize == VarX && (bPieces[j].y+gridSize)/gridSize == VarY){
+        //Angiver variablen d til at være lig med indexet af brikken
+        nums[1] = j;
+      }
+    } 
+  }
+  
+  return nums
 }
 
 
