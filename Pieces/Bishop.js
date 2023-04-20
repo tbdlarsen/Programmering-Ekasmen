@@ -19,27 +19,27 @@ class Bishop extends Piece{
         
       
              //1:4 (NV)
-        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
+        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
             this.x -= absX*this.grid;
             this.y -= absY*this.grid; 
         }
 
         //2:4 (NØ)
-        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
-            this.x += absX*this.grid;
-            this.y -= absY*this.grid; 
+        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x <= -1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
+            this.x +=  (absX)*this.grid;
+            this.y -= (absY)*this.grid; 
         }
 
         //3:4 (SV)
-        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x <= -1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
-            this.x -= absX*this.grid;
-            this.y += absY*this.grid; 
+        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y <= -1 && (x2-x)/(y2-y) == -1) {
+            this.x -= (absX)*this.grid;
+            this.y += (absY)*this.grid; 
         }
 
         //4:4 (SØ)
-        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
-            this.x += absX*this.grid;
-            this.y += absY*this.grid; 
+        if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x <= -1 && y2-y <= -1 && (x2-x)/(y2-y) == 1) {
+            this.x += (absX)*this.grid;
+            this.y += (absY)*this.grid; 
         }
           
 

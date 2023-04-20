@@ -13,11 +13,11 @@ class Queen extends Piece{
     }
 
     Movement(x,x2,y,y2){
-      //1:8 (NV)
+      
 
         let absX = abs(x2-x);
         let absY = abs(y2-y);
-
+      //1:8 (NV)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
         this.x -= (absX)*this.grid;
         this.y -= (absY)*this.grid; 
@@ -29,7 +29,7 @@ class Queen extends Piece{
       }
 
       //3:8 (NØ)
-      if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= -1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
+      if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x <= -1 && y2-y >= 1 && (x2-x)/(y2-y) == -1) {
         this.x +=  (absX)*this.grid;
         this.y -= (absY)*this.grid; 
       }
