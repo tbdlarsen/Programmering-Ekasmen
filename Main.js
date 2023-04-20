@@ -179,6 +179,7 @@ function mousePressed() {
 
     //Printer x og y koordinater
     print("x = " + x + " y = " + y);
+    
 
     //Tjekker om der er en brik på mussens lokation x og y
     for (let i = 0; i < 16; i++) {
@@ -297,7 +298,7 @@ function mousePressed() {
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
   pieceChosenNum = !pieceChosenNum;
-
+  print(spillerSkiftNum);
 }
 
 
@@ -305,13 +306,26 @@ function mousePressed() {
 //Funktion som giver alle de hvide pieces deres egenskaber (Herunder: King, Queen, Rook, Knight, Bishop og Pawn)
 function wPiecesEgenskaber() { 
   for(let i = 0; i < wPieces.length; i++){
-  wPieces[i].Movement(x,x2,y,y2);
+    if(wPieces[i].piece == 5.02){
+      wPieces[i].Movement(x,x2,y,y2,1);
+
+      
+    }else{
+      wPieces[i].Movement(x,x2,y,y2);
+    }
+  
   }   
 }
+
 function bPiecesEgenskaber() { 
   for(let i = 0; i < bPieces.length; i++){
-  bPieces[i].Movement(x,x2,y,y2);
-  }   
+    if(bPieces[i].piece == 5.02){
+      bPieces[i].Movement(x,x2,y,y2,-1);
+
+    }else{
+      bPieces[i].Movement(x,x2,y,y2);
+    }   
+  }
 }
 
 
