@@ -207,7 +207,9 @@ function mousePressed() {
         for (let j = 0; j < bPieces.length; j++) {
           if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
             bPieces.splice(j,1);
+            console.log(bPieces[j]);
             spillerSkiftNum = true;
+            break;
           }
         }
       }
