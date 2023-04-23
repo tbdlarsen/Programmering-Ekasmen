@@ -165,21 +165,23 @@ function mousePressed() {
     print("x2 = " + x2 + " y2 = " + y2);
 
     //Tjekker om der er en brik på musens lokation x2 og y2
-    for (let i = 0; i < 16; i++) {
-      //Finder indixet til brikken, som har musens lokation x2 og y2 
-
-      //Hvidt index
+    for(let i = 0; i < wPieces.length; i++){
       if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d = i;
       }
 
-      //Sort index
+
+    }
+    for(let i = 0; i < bPieces.length; i++){
       if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
         //Angiver variablen d til at være lig med indexet af brikken
         d2 = i;
       }
+
+
     }
+    
 
   }
 
@@ -195,20 +197,21 @@ function mousePressed() {
     
 
     //Tjekker om der er en brik på mussens lokation x og y
-    for (let i = 0; i < 16; i++) {
-      //Finder indixet til brikken, som har musens lokation x og y 
-
-      //Hvidt index
-      if((wPieces[i].x+gridSize)/gridSize == x && (wPieces[i].y+gridSize)/gridSize == y){
-        //Angiver variablen e til at være lig med indexet af brikken
+    for(let i = 0; i < wPieces.length; i++){
+      if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
+        //Angiver variablen d til at være lig med indexet af brikken
         e = i;
       }
 
-      //Sort index
-      if((bPieces[i].x+gridSize)/gridSize == x && (bPieces[i].y+gridSize)/gridSize == y){
-        //Angiver variablen e til at være lig med indexet af brikken
+
+    }
+    for(let i = 0; i < bPieces.length; i++){
+      if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
+        //Angiver variablen d til at være lig med indexet af brikken
         e2 = i;
       }
+
+
     }
     
 
