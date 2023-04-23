@@ -165,28 +165,9 @@ function mousePressed() {
     print("x2 = " + x2 + " y2 = " + y2);
 
     //Tjekker om der er en brik på musens lokation x2 og y2
-
-    //hvidt index
-    for(let i = 0; i < wPieces.length; i++){
-
-      if((wPieces[i].x+gridSize)/gridSize == x2 && (wPieces[i].y+gridSize)/gridSize == y2){
-        //Angiver variablen d til at være lig med indexet af brikken
-        d = i;
-      }
-
-    }
-
-    //sort index
-    for(let i = 0; i < bPieces.length; i++){
-
-      if((bPieces[i].x+gridSize)/gridSize == x2 && (bPieces[i].y+gridSize)/gridSize == y2){
-        //Angiver variablen d til at være lig med indexet af brikken
-        d2 = i;
-      }
-
-
-    }
-    
+    d = findIndex(wPieces,x2,y2);
+    d2 =findIndex(bPieces,x2,y2);
+    print(d,d2);
 
   }
 
@@ -212,7 +193,7 @@ function mousePressed() {
       }
 
     }
-    
+
     //Sort index
     for (let i = 0; i < bPieces.length; i++){
 
@@ -222,8 +203,13 @@ function mousePressed() {
       }
 
     }
-    
 
+    //virker ikke 
+    /*
+    e = findIndex(wPieces,x,y);
+    e2 = findIndex(bPieces,x,y);
+    */
+   
     //Hvid's tur
     if (spillerSkiftNum == false) {
 
@@ -318,7 +304,7 @@ function mousePressed() {
 
 
     }
-   
+
   }  
 
   //Ændre boolean variabel til den modsate tilstand (true -> false eller false -> true) 
@@ -378,24 +364,24 @@ function tileDark() {
   }
 }
 
-  //Funktion for de mørke ternet firkanter på brættet
-  function tileLight() {
+//Funktion for de mørke ternet firkanter på brættet
+function tileLight() {
 
-    //Angiver tern koordinater
-    let ternX = 0;
-    let ternY = 0;
+  //Angiver tern koordinater
+  let ternX = 0;
+  let ternY = 0;
 
-    //For loops som gør at felte bliver ternet
-    for(let i = 0; i < 4; i++) {
-      for(let j = 0; j < 4; j++) {
-        rect(ternX +(200*j), ternY+(200*i),100);
-      }
-      
-      for(let j = 0; j < 4; j++) {
-        rect(ternX + 100+(200*j), ternY+100+(200*i),100);
-      }
+  //For loops som gør at felte bliver ternet
+  for(let i = 0; i < 4; i++) {
+    for(let j = 0; j < 4; j++) {
+      rect(ternX +(200*j), ternY+(200*i),100);
+    }
+    
+    for(let j = 0; j < 4; j++) {
+      rect(ternX + 100+(200*j), ternY+100+(200*i),100);
     }
   }
+}
 
   
 
@@ -412,7 +398,6 @@ function wPiecesEgenskaber() {
   
   }   
 }
-
 function bPiecesEgenskaber() { 
   for(let i = 0; i < bPieces.length; i++){
     if(bPieces[i].piece == 5.02){
@@ -423,5 +408,24 @@ function bPiecesEgenskaber() {
     }   
   }
 }
+function findIndex(colorPiece,varX,varY){
+  let tempIndex = 0;
+
+  for(let i = 0; i < colorPiece.length; i++){
+
+    if((colorPiece[i].x+gridSize)/gridSize == varX && (colorPiece[i].y+gridSize)/gridSize == varY){
+      //Angiver variablen d til at være lig med indexet af brikken
+      tempIndex = i;
+    }
+
+  }
+
+  return tempIndex;
+}
+
+
+
+
+
 
 
