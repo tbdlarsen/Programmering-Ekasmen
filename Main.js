@@ -220,8 +220,8 @@ function mousePressed() {
 
 
       //KILL - Tjekker om nogle af de hvide brikker har slået en sort brik ihjel, vha. to for lykker
-      for(let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+      for(let i = 0; i < wPieces.lenght; i++) {
+        for (let j = 0; j < bPieces.length; j++) {
           if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
             bPieces[j].y = bPieces[j].y + 800;
           }
@@ -230,7 +230,7 @@ function mousePressed() {
       
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
-      for(let i = 0; i < 16; i++) {
+      for(let i = 0; i < wPieces.length; i++) {
         if(x == (wPieces[i].x+gridSize)/gridSize && y == (wPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = true;
         }
@@ -267,8 +267,8 @@ function mousePressed() {
 
 
       //KILL - Tjekker om nogle af de sorte brikker har slået en hvid brik ihjel, vha. to for lykker
-      for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+      for (let i = 0; i < wPieces.length; i++) {
+        for (let j = 0; j < bPieces.length; j++) {
           if (wPieces[i].x == bPieces[j].x && wPieces[i].y == bPieces[j].y) {
             wPieces[i].y = wPieces[i].y + 800;
           }
@@ -277,7 +277,7 @@ function mousePressed() {
 
 
       //Sørger for at man kun skifter spillertur, hvis man har flyttet en brik
-      for(let i = 0; i < 16; i++) {
+      for(let i = 0; i < bPieces.length; i++) {
         if(x == (bPieces[i].x+gridSize)/gridSize && y == (bPieces[i].y+gridSize)/gridSize) {
           spillerSkiftNum = false;
         }
