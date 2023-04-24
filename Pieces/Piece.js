@@ -1,4 +1,4 @@
-//Clas 
+//Class
 class Piece {
 
     //Piece constructor

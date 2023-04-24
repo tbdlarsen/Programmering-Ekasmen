@@ -17,6 +17,7 @@ class Queen extends Piece{
 
         let absX = abs(x2-x);
         let absY = abs(y2-y);
+        
       //1:8 (NV)
       if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x >= 1 && y2-y >= 1 && (x2-x)/(y2-y) == 1) {
         this.x -= (absX)*this.grid;

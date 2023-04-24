@@ -19,7 +19,7 @@ class King extends Piece{
             this.y -= this.grid; 
         }
 
-        //2:8 (N)
+        
         if((this.x + this.grid)/this.grid == x2 && (this.y + this.grid)/this.grid == y2 && x2-x == 0 && y2-y == 1) {
             this.y -= this.grid; 
         }
