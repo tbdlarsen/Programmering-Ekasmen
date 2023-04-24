@@ -118,7 +118,7 @@ function startposition (){
   for (let i = 0; i < 2 ; i++){
     if (i < 2){
       wPieces.push(new Rook(i*7,0)); //wPieces[2], wPieces[3] 
-      bPieces.push(new Rook(i*7,7)); //bPieces[2], wPieces[4]
+      bPieces.push(new Rook(i*7,7)); //bPieces[2], wPieces[3]
     }
   }    
   
