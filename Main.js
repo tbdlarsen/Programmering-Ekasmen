@@ -166,7 +166,7 @@ function mousePressed() {
 
     //Tjekker om der er en brik på musens lokation x2 og y2
     d = findIndex(wPieces,x2,y2);
-    d2 =findIndex(bPieces,x2,y2);
+    d2 = findIndex(bPieces,x2,y2);
     print(d,d2);
 
   }
